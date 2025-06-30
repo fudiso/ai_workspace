@@ -1,0 +1,255 @@
+<svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 화살표 마커 -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+     refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="rgb(132,136,139)" />
+    </marker>
+  </defs>
+
+  <!-- 배경 -->
+  <rect width="1200" height="900" fill="#f8f9fa"/>
+  
+  <!-- 제목 -->
+  <text x="600" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="rgb(4,59,114)">
+    
+  </text>
+  
+  <!-- 1. 사용자 레이어 -->
+  <rect x="100" y="60" width="1000" height="80" rx="10" ry="10" fill="rgb(4,59,114)" stroke="rgb(4,59,114)" stroke-width="2"/>
+  <text x="600" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+    사용자 그룹 (User Layer)
+  </text>
+  <text x="200" y="110" font-family="Arial, sans-serif" font-size="14" fill="white">운용부서</text>
+  <text x="350" y="110" font-family="Arial, sans-serif" font-size="14" fill="white">리스크관리</text>
+  <text x="500" y="110" font-family="Arial, sans-serif" font-size="14" fill="white">마케팅</text>
+  <text x="650" y="110" font-family="Arial, sans-serif" font-size="14" fill="white">백오피스</text>
+  <text x="800" y="110" font-family="Arial, sans-serif" font-size="14" fill="white">IT부서</text>
+  <text x="950" y="110" font-family="Arial, sans-serif" font-size="14" fill="white">기타 현업</text>
+
+  <!-- 화살표: 사용자 → 포털 -->
+  <line x1="600" y1="140" x2="600" y2="170" stroke="rgb(132,136,139)" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- 2. 통합 포털 레이어 -->
+  <rect x="100" y="180" width="1000" height="80" rx="10" ry="10" fill="rgb(245,130,32)" stroke="rgb(245,130,32)" stroke-width="2"/>
+  <text x="600" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+    AI WorkSpace 통합 포털 (Portal Layer)
+  </text>
+  <text x="600" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">
+    Streamlit 기반 웹 인터페이스
+  </text>
+  <text x="600" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">
+    Single Entry Point for All Functions
+  </text>
+
+  <!-- 화살표: 포털 → 핵심기능 -->
+  <line x1="600" y1="260" x2="600" y2="290" stroke="rgb(132,136,139)" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- 3. 핵심 기능 레이어 -->
+  <rect x="100" y="300" width="1000" height="120" rx="10" ry="10" fill="rgb(0,169,206)" stroke="rgb(0,169,206)" stroke-width="2"/>
+  <text x="600" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+    핵심 기능 (Core Function Layer)
+  </text>
+  
+  <!-- 핵심 기능 박스들 -->
+  <rect x="120" y="340" width="180" height="65" rx="5" ry="5" fill="white" stroke="rgb(0,169,206)" stroke-width="1"/>
+  <text x="210" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(0,169,206)">
+    LLM 기반
+  </text>
+  <text x="210" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(0,169,206)">
+    자연어 질의
+  </text>
+  <text x="210" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(0,169,206)">
+    (Chat Interface)
+  </text>
+
+  <rect x="320" y="340" width="180" height="65" rx="5" ry="5" fill="white" stroke="rgb(0,169,206)" stroke-width="1"/>
+  <text x="410" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(0,169,206)">
+    데이터/코드
+  </text>
+  <text x="410" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(0,169,206)">
+    카탈로그
+  </text>
+  <text x="410" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(0,169,206)">
+    (Asset Management)
+  </text>
+
+  <rect x="520" y="340" width="180" height="65" rx="5" ry="5" fill="white" stroke="rgb(0,169,206)" stroke-width="1"/>
+  <text x="610" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(0,169,206)">
+    클라우드
+  </text>
+  <text x="610" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(0,169,206)">
+    통합 개발환경
+  </text>
+  <text x="610" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(0,169,206)">
+    (Cloud IDE)
+  </text>
+
+  <rect x="720" y="340" width="180" height="65" rx="5" ry="5" fill="white" stroke="rgb(0,169,206)" stroke-width="1"/>
+  <text x="810" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(0,169,206)">
+    AI Code
+  </text>
+  <text x="810" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(0,169,206)">
+    Assistant
+  </text>
+  <text x="810" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(0,169,206)">
+    (Cursor)
+  </text>
+
+  <rect x="920" y="340" width="160" height="65" rx="5" ry="5" fill="white" stroke="rgb(0,169,206)" stroke-width="1"/>
+  <text x="1000" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(0,169,206)">
+    워크플로우
+  </text>
+  <text x="1000" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(0,169,206)">
+    자동화
+  </text>
+  <text x="1000" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(0,169,206)">
+    (n8n)
+  </text>
+
+  <!-- 화살표: 핵심기능 → 엔진 -->
+  <line x1="210" y1="420" x2="250" y2="460" stroke="rgb(132,136,139)" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="410" y1="420" x2="410" y2="460" stroke="rgb(132,136,139)" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="610" y1="420" x2="610" y2="460" stroke="rgb(132,136,139)" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="810" y1="420" x2="750" y2="460" stroke="rgb(132,136,139)" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="1000" y1="420" x2="950" y2="460" stroke="rgb(132,136,139)" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- 4. 엔진 레이어 -->
+  <rect x="100" y="470" width="1000" height="120" rx="10" ry="10" fill="rgb(240,178,107)" stroke="rgb(240,178,107)" stroke-width="2"/>
+  <text x="600" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+    두뇌/엔진 (Engine Layer)
+  </text>
+  
+  <!-- 엔진 박스들 -->
+  <rect x="120" y="510" width="220" height="65" rx="5" ry="5" fill="white" stroke="rgb(240,178,107)" stroke-width="1"/>
+  <text x="230" y="530" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    LLM API
+  </text>
+  <text x="230" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    (자연어↔코드/SQL 변환)
+  </text>
+  <text x="230" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(174,99,78)">
+    Text-to-Code Engine
+  </text>
+
+  <rect x="360" y="510" width="220" height="65" rx="5" ry="5" fill="white" stroke="rgb(240,178,107)" stroke-width="1"/>
+  <text x="470" y="530" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    코드 실행
+  </text>
+  <text x="470" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    프레임워크
+  </text>
+  <text x="470" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(174,99,78)">
+    (백테스팅, 스트레스 테스트)
+  </text>
+
+  <rect x="600" y="510" width="220" height="65" rx="5" ry="5" fill="white" stroke="rgb(240,178,107)" stroke-width="1"/>
+  <text x="710" y="530" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    컴퓨팅 자원
+  </text>
+  <text x="710" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    (서버, 쿠버네티스)
+  </text>
+  <text x="710" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(174,99,78)">
+    Computing Infrastructure
+  </text>
+
+  <rect x="840" y="510" width="220" height="65" rx="5" ry="5" fill="white" stroke="rgb(240,178,107)" stroke-width="1"/>
+  <text x="950" y="530" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    버전 관리
+  </text>
+  <text x="950" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    시스템
+  </text>
+  <text x="950" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(174,99,78)">
+    (GitLab)
+  </text>
+
+  <!-- 화살표: 엔진 → 데이터 -->
+  <line x1="230" y1="590" x2="300" y2="620" stroke="rgb(132,136,139)" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="470" y1="590" x2="470" y2="620" stroke="rgb(132,136,139)" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="710" y1="590" x2="640" y2="620" stroke="rgb(132,136,139)" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="950" y1="590" x2="900" y2="620" stroke="rgb(132,136,139)" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- 5. 데이터/인프라 레이어 -->
+  <rect x="100" y="630" width="1000" height="120" rx="10" ry="10" fill="rgb(174,99,78)" stroke="rgb(174,99,78)" stroke-width="2"/>
+  <text x="600" y="655" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">
+    데이터/인프라 (Foundation Layer)
+  </text>
+  
+  <!-- 데이터 박스들 -->
+  <rect x="120" y="670" width="200" height="65" rx="5" ry="5" fill="white" stroke="rgb(174,99,78)" stroke-width="1"/>
+  <text x="220" y="690" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    Snowflake
+  </text>
+  <text x="220" y="705" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    데이터 웨어하우스
+  </text>
+  <text x="220" y="720" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(174,99,78)">
+    Central Data Hub
+  </text>
+
+  <rect x="340" y="670" width="200" height="65" rx="5" ry="5" fill="white" stroke="rgb(174,99,78)" stroke-width="1"/>
+  <text x="440" y="690" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    내부 DB
+  </text>
+  <text x="440" y="705" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    (펀드정보, 성과분석)
+  </text>
+  <text x="440" y="720" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(174,99,78)">
+    Internal Systems
+  </text>
+
+  <rect x="560" y="670" width="200" height="65" rx="5" ry="5" fill="white" stroke="rgb(174,99,78)" stroke-width="1"/>
+  <text x="660" y="690" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    외부 API
+  </text>
+  <text x="660" y="705" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    (시장데이터, 뉴스)
+  </text>
+  <text x="660" y="720" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(174,99,78)">
+    External Data Sources
+  </text>
+
+  <rect x="780" y="670" width="200" height="65" rx="5" ry="5" fill="white" stroke="rgb(174,99,78)" stroke-width="1"/>
+  <text x="880" y="690" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    클라우드 인프라
+  </text>
+  <text x="880" y="705" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="rgb(174,99,78)">
+    (AWS, Azure)
+  </text>
+  <text x="880" y="720" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(174,99,78)">
+    Cloud Infrastructure
+  </text>
+
+  <!-- 범례 -->
+  <rect x="50" y="780" width="300" height="100" rx="5" ry="5" fill="white" stroke="rgb(132,136,139)" stroke-width="1"/>
+  <text x="200" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="rgb(4,59,114)">
+    데이터 플로우
+  </text>
+  <line x1="70" y1="815" x2="110" y2="815" stroke="rgb(132,136,139)" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="120" y="820" font-family="Arial, sans-serif" font-size="11" fill="rgb(4,59,114)">
+    제어/명령 플로우
+  </text>
+  <text x="200" y="860" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="rgb(132,136,139)">
+    Code-Native 조직으로의 전환
+  </text>
+
+  <!-- 우측 하단 설명 박스 -->
+  <rect x="850" y="780" width="320" height="100" rx="5" ry="5" fill="white" stroke="rgb(132,136,139)" stroke-width="1"/>
+  <text x="1010" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="rgb(4,59,114)">
+    핵심 가치
+  </text>
+  <text x="860" y="820" font-family="Arial, sans-serif" font-size="11" fill="rgb(4,59,114)">
+    ✓ 'Code-Native'조직으로의 전환
+  </text>
+  <text x="860" y="835" font-family="Arial, sans-serif" font-size="11" fill="rgb(4,59,114)">
+    ✓ 데이터 민주화 (Democratization of Data)
+  </text>
+  <text x="860" y="850" font-family="Arial, sans-serif" font-size="11" fill="rgb(4,59,114)">
+    ✓ 고부가가치 업무 집중
+  </text>
+  <text x="860" y="865" font-family="Arial, sans-serif" font-size="11" fill="rgb(4,59,114)">
+    ✓ 조직 전체의 코딩 역량 내재화
+  </text>
+</svg>
