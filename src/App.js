@@ -362,7 +362,7 @@ const AIWorkSpaceDemo = () => {
                 onClick={() => setActiveSection(item.id)}
                 className={`py-4 px-2 border-b-2 transition-colors ${
                   activeSection === item.id 
-                    ? 'border-orange-500 text-orange-600' 
+                    ? 'border-blue-600 text-blue-700' 
                     : 'border-transparent text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -398,9 +398,9 @@ const AIWorkSpaceDemo = () => {
             <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
               {/* 핵심 문제의식 카드 */}
               <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="h-2 bg-gradient-to-r from-orange-400 to-red-400"></div>
+                <div className="h-2 bg-gradient-to-r from-blue-400 to-sky-400"></div>
                 <div className="p-6">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange-100 to-red-100 rounded-lg mb-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-100 to-sky-100 rounded-lg mb-4">
                     <AlertTriangle className="w-6 h-6" style={{ color: colors.secondary }} />
                   </div>
                   <h3 className="text-lg font-bold mb-3" style={{ color: colors.secondary }}>
@@ -410,8 +410,8 @@ const AIWorkSpaceDemo = () => {
                     "데이터를 찾기 어렵고, 분석 역량은 제한적이고, 노하우가 축적되지 못하는" 구조적 문제
                   </p>
                   <div className="mt-4 pt-4 border-t border-gray-100">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-50 text-orange-700">
-                      <span className="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
+                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
                       해결 필요
                     </span>
                   </div>
@@ -779,7 +779,7 @@ const AIWorkSpaceDemo = () => {
             </div>
 
             {/* Quick Win Highlight */}
-            <div className="bg-gradient-to-r from-orange-50 to-blue-50 rounded-lg p-6 border border-orange-200">
+            <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-6 border border-blue-200">
               <div className="flex items-center mb-3">
                 <Zap className="w-6 h-6 mr-3" style={{ color: colors.secondary }} />
                 <h3 className="text-xl font-bold" style={{ color: colors.primary }}>Quick-Win 전략</h3>
