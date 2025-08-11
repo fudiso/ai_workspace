@@ -16,104 +16,157 @@ const DataCatalog = () => {
   };
 
   const categories = [
-    { id: 'all', name: '전체', count: 24 },
-    { id: 'financial', name: '재무데이터', count: 8 },
-    { id: 'market', name: '시장데이터', count: 6 },
-    { id: 'portfolio', name: '포트폴리오', count: 5 },
-    { id: 'risk', name: '리스크', count: 3 },
-    { id: 'esg', name: 'ESG/지속가능', count: 2 }
+    { id: 'all', name: '전체', count: 18 },
+    { id: 'customer', name: '고객분석', count: 6 },
+    { id: 'product', name: '상품현황', count: 4 },
+    { id: 'consumption', name: '소비행태', count: 5 },
+    { id: 'risk', name: '리스크관리', count: 3 }
   ];
 
   const dataItems = [
     {
       id: 1,
-      title: "글로벌 기업 표준화 재무제표",
-      description: "S&P 500, KOSPI 200 등 주요 지수 구성종목의 연결재무제표 표준화 데이터",
-      category: "financial",
-      source: "Bloomberg Terminal, DART, SEC EDGAR",
+      title: "그룹 통합 고객 360도 프로파일",
+      description: "은행·증권·카드·생명보험 전 계열사 거래 고객의 비식별화된 통합 프로파일 및 생애가치 분석",
+      category: "customer",
+      source: "우리은행, 우리투자증권, 우리카드, 동양/ABL생명",
       updateFreq: "일일",
-      records: "12.5M",
-      methodology: "IFRS/GAAP 표준화 변환 후 시계열 정합성 검증",
-      tags: ["재무제표", "표준화", "글로벌"],
-      icon: <BarChart3 className="w-5 h-5" />,
-      lastUpdated: "2025-06-25 09:00",
-      relatedCodes: ["financial_ratio_analysis.py", "peer_comparison.py"],
-      quality: 95
+      records: "8.2M",
+      methodology: "k-익명성 적용 비식별화, 그룹사별 고객 매칭 알고리즘, CLV 모델링",
+      tags: ["통합고객", "생애가치", "비식별화"],
+      icon: <Users className="w-5 h-5" />,
+      lastUpdated: "2025-08-11 09:00",
+      relatedCodes: ["customer_360_analysis.py", "clv_modeling.py", "cross_sell_opportunity.py"],
+      quality: 96,
+      governance: "개인정보보호법 준수, 금융위 가이드라인 적용"
     },
     {
       id: 2,
-      title: "실시간 주식/채권 가격 피드",
-      description: "전 세계 주요 거래소의 실시간 가격, 거래량, 호가 정보",
-      category: "market",
-      source: "Reuters Eikon, Bloomberg API, KRX DataHub",
-      updateFreq: "실시간",
-      records: "2.8B",
-      methodology: "거래시간 기준 품질검증, 이상치 필터링 적용",
-      tags: ["실시간", "가격데이터", "거래량"],
+      title: "그룹사별 VIP 고객 행동 분석",
+      description: "자산 1억원 이상 우수고객의 그룹사 간 이동패턴, 상품선호도, 충성도 분석",
+      category: "customer",
+      source: "우리은행, 우리투자증권, 우리카드, 동양/ABL생명",
+      updateFreq: "주간",
+      records: "450K",
+      methodology: "RFM 모델 기반 고객세분화, 이탈예측 모델, 상품추천 알고리즘",
+      tags: ["VIP고객", "이동패턴", "충성도"],
       icon: <TrendingUp className="w-5 h-5" />,
-      lastUpdated: "2025-06-25 14:32",
-      relatedCodes: ["price_analysis.py", "volatility_calc.py"],
-      quality: 98
+      lastUpdated: "2025-08-07 15:30",
+      relatedCodes: ["vip_migration_analysis.py", "loyalty_scoring.py", "churn_prediction.py"],
+      quality: 94,
+      governance: "자산등급별 마스킹, 고객동의 기반 활용"
     },
     {
       id: 3,
-      title: "대체투자 성과분석 데이터셋",
-      description: "헤지펀드, 사모펀드, 부동산펀드 등 대체투자 상품의 성과 및 위험지표",
-      category: "portfolio",
-      source: "HFR Database, Preqin, 내부 투자데이터",
-      updateFreq: "월간",
-      records: "450K",
-      methodology: "벤치마크 대비 성과 분석, 리스크 조정 수익률 계산",
-      tags: ["대체투자", "성과분석", "위험지표"],
-      icon: <Database className="w-5 h-5" />,
-      lastUpdated: "2025-06-20 16:00",
-      relatedCodes: ["alternative_analysis.py", "performance_attribution.py"],
-      quality: 92
+      title: "상품 해지/해약 고객 행동 인사이트",
+      description: "예금, 적금, 보험, 펀드 등 주요 상품 해지고객의 해지 전후 행동패턴 및 대안상품 선택 분석",
+      category: "product",
+      source: "우리은행, 우리투자증권, 동양/ABL생명",
+      updateFreq: "일일",
+      records: "2.1M",
+      methodology: "해지사유 텍스트 마이닝, 고객여정 분석, 대안상품 연관성 분석",
+      tags: ["해지분석", "고객여정", "상품전환"],
+      icon: <BarChart3 className="w-5 h-5" />,
+      lastUpdated: "2025-08-11 08:15",
+      relatedCodes: ["churn_analysis.py", "product_migration.py", "retention_strategy.py"],
+      quality: 92,
+      governance: "해지사유 개인정보 제거, 통계적 분석용 데이터"
     },
     {
       id: 4,
-      title: "ESG 평가 및 지속가능성 지표",
-      description: "MSCI, Sustainalytics, 국내 ESG 평가기관의 종합 ESG 점수 및 세부 지표",
-      category: "esg",
-      source: "MSCI ESG, Sustainalytics, KCGS",
-      updateFreq: "분기",
-      records: "85K",
-      methodology: "다중 평가기관 점수 가중평균, 섹터별 표준화",
-      tags: ["ESG", "지속가능성", "평가점수"],
+      title: "카드 해외결제 트렌드 분석",
+      description: "미래에셋카드 고객의 국가별, 업종별, 시점별 해외결제 패턴 및 환율 민감도 분석",
+      category: "consumption",
+      source: "우리카드",
+      updateFreq: "일일",
+      records: "15.8M",
+      methodology: "지역별 소비패턴 클러스터링, 환율영향도 분석, 계절성 모델링",
+      tags: ["해외결제", "환율민감도", "여행패턴"],
       icon: <Globe className="w-5 h-5" />,
-      lastUpdated: "2025-06-15 10:00",
-      relatedCodes: ["esg_screening.py", "sustainability_score.py"],
-      quality: 88
+      lastUpdated: "2025-08-11 10:30",
+      relatedCodes: ["overseas_spending.py", "fx_sensitivity.py", "travel_pattern.py"],
+      quality: 98,
+      governance: "가맹점별 개인식별정보 마스킹, 통계분석용 집계 데이터"
     },
     {
       id: 5,
-      title: "거시경제 및 금리 시나리오",
-      description: "주요국 중앙은행 정책금리, GDP, 인플레이션 전망 및 시나리오 분석",
-      category: "market",
-      source: "IMF, OECD, 한국은행, Fed Economic Data",
-      updateFreq: "주간",
-      records: "125K",
-      methodology: "계절조정, 전망치 vs 실제치 추적분석",
-      tags: ["거시경제", "금리", "시나리오"],
+      title: "국내 카드소비 트렌드 Big Data",
+      description: "업종별, 지역별, 연령대별 카드소비 트렌드 및 경제지표와의 상관관계 분석",
+      category: "consumption",
+      source: "우리카드",
+      updateFreq: "일일",
+      records: "180M",
+      methodology: "업종분류체계 표준화, 지역별 소비지수 산출, 거시경제 영향도 분석",
+      tags: ["소비트렌드", "업종분석", "경제지표"],
       icon: <BarChart3 className="w-5 h-5" />,
-      lastUpdated: "2025-06-24 15:30",
-      relatedCodes: ["macro_analysis.py", "scenario_modeling.py"],
-      quality: 94
+      lastUpdated: "2025-08-11 11:45",
+      relatedCodes: ["consumption_trend.py", "sector_analysis.py", "economic_correlation.py"],
+      quality: 95,
+      governance: "개인 거래내역 비식별화, 업종별 집계 통계 제공"
     },
     {
       id: 6,
-      title: "신용평가 및 부도확률 모델링",
-      description: "기업 신용등급, PD(부도확률), LGD(손실률) 모델링 데이터",
+      title: "그룹 디지털 채널 이용 행태",
+      description: "모바일뱅킹, HTS, 카드앱, 보험앱 등 그룹사 디지털 채널의 통합 이용패턴 분석",
+      category: "consumption",
+      source: "우리은행, 우리투자증권, 우리카드, 동양/ABL생명",
+      updateFreq: "실시간",
+      records: "95M",
+      methodology: "디지털 터치포인트 매핑, 채널별 전환율 분석, UX 개선점 도출",
+      tags: ["디지털채널", "앱이용", "채널전환"],
+      icon: <Database className="w-5 h-5" />,
+      lastUpdated: "2025-08-11 12:00",
+      relatedCodes: ["digital_behavior.py", "channel_analytics.py", "ux_optimization.py"],
+      quality: 93,
+      governance: "앱 이용로그 익명화, 개인식별정보 제거"
+    },
+    {
+      id: 7,
+      title: "그룹 신용위험 통합 모니터링",
+      description: "그룹 전체 고객의 신용등급, 연체율, 부실징후 통합 모니터링 대시보드",
       category: "risk",
-      source: "Moody's, S&P, Fitch, 내부 신용평가 모델",
+      source: "우리은행, 우리카드",
       updateFreq: "일일",
-      records: "890K",
-      methodology: "Merton 모델 기반 PD 추정, 역사적 부도율 캘리브레이션",
-      tags: ["신용위험", "부도확률", "등급"],
+      records: "6.8M",
+      methodology: "그룹통합 신용평점 모델, Early Warning System, 포트폴리오 리스크 측정",
+      tags: ["신용위험", "연체예측", "통합모니터링"],
       icon: <FileText className="w-5 h-5" />,
-      lastUpdated: "2025-06-25 08:45",
-      relatedCodes: ["credit_risk.py", "pd_modeling.py"],
-      quality: 91
+      lastUpdated: "2025-08-11 08:30",
+      relatedCodes: ["credit_risk_modeling.py", "delinquency_prediction.py", "portfolio_risk.py"],
+      quality: 97,
+      governance: "신용정보법 준수, 그룹 내부 공유 승인"
+    },
+    {
+      id: 8,
+      title: "연금/보험 가입자 라이프스테이지 분석",
+      description: "생명보험 가입자의 생애주기별 보험니즈 변화 및 추가 보장상품 수요 예측",
+      category: "product",
+      source: "동양/ABL생명",
+      updateFreq: "월간",
+      records: "3.2M",
+      methodology: "라이프스테이지 세분화, 보험니즈 예측모델, 상품추천 알고리즘",
+      tags: ["라이프스테이지", "보험니즈", "상품추천"],
+      icon: <TrendingUp className="w-5 h-5" />,
+      lastUpdated: "2025-08-01 16:00",
+      relatedCodes: ["lifecycle_analysis.py", "insurance_needs.py", "product_recommendation.py"],
+      quality: 91,
+      governance: "보험업법 준수, 계약자 동의 기반 활용"
+    },
+    {
+      id: 9,
+      title: "그룹 부동산 담보대출 포트폴리오",
+      description: "은행 주택담보대출의 지역별, 가격대별 분포 및 부동산 시장과의 연관성 분석",
+      category: "risk",
+      source: "우리은행",
+      updateFreq: "주간",
+      records: "890K",
+      methodology: "담보가치 평가모델, 지역별 리스크 산출, 시장충격 시나리오 분석",
+      tags: ["담보대출", "부동산리스크", "포트폴리오"],
+      icon: <BarChart3 className="w-5 h-5" />,
+      lastUpdated: "2025-08-05 14:20",
+      relatedCodes: ["mortgage_analysis.py", "property_risk.py", "scenario_testing.py"],
+      quality: 94,
+      governance: "개인정보 마스킹, 통계분석 목적 활용"
     }
   ];
 
@@ -239,7 +292,7 @@ const DataCatalog = () => {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-gray-600">데이터 소스:</span>
-                  <span className="font-medium">{data.source}</span>
+                  <span className="font-medium text-sm">{data.source}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">업데이트 주기:</span>
@@ -253,6 +306,12 @@ const DataCatalog = () => {
                   <span className="text-gray-600">마지막 업데이트:</span>
                   <span className="font-medium">{data.lastUpdated}</span>
                 </div>
+                {data.governance && (
+                  <div className="pt-2 border-t">
+                    <span className="text-gray-600 block mb-1">데이터 거버너스:</span>
+                    <span className="text-sm text-gray-700">{data.governance}</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -319,8 +378,8 @@ const DataCatalog = () => {
         style={{ backgroundColor: colors.primary }}
       >
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold mb-2">AI WorkSpace - Data Catalog</h1>
-          <p className="text-blue-100">전사 데이터 자산을 체계적으로 관리하고 활용하세요</p>
+          <h1 className="text-3xl font-bold mb-2">우리금융그룹 데이터 카탈로그</h1>
+          <p className="text-blue-100">은행·증권·카드·생명보험 그룹사 통합 데이터 자산을 체계적으로 활용</p>
         </div>
       </div>
 
@@ -369,7 +428,7 @@ const DataCatalog = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">총 데이터셋</p>
-                <p className="text-2xl font-bold" style={{ color: colors.primary }}>24</p>
+                <p className="text-2xl font-bold" style={{ color: colors.primary }}>18</p>
               </div>
               <Database className="w-8 h-8" style={{ color: colors.secondary }} />
             </div>
@@ -377,8 +436,8 @@ const DataCatalog = () => {
           <div className="bg-white p-4 rounded-lg shadow-md">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">활성 사용자</p>
-                <p className="text-2xl font-bold" style={{ color: colors.primary }}>156</p>
+                <p className="text-sm text-gray-600">그룹 고객수</p>
+                <p className="text-2xl font-bold" style={{ color: colors.primary }}>8.2M</p>
               </div>
               <Users className="w-8 h-8" style={{ color: colors.tertiary }} />
             </div>
@@ -386,8 +445,8 @@ const DataCatalog = () => {
           <div className="bg-white p-4 rounded-lg shadow-md">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">일일 쿼리</p>
-                <p className="text-2xl font-bold" style={{ color: colors.primary }}>1,247</p>
+                <p className="text-sm text-gray-600">일일 분석 건수</p>
+                <p className="text-2xl font-bold" style={{ color: colors.primary }}>3,847</p>
               </div>
               <BarChart3 className="w-8 h-8" style={{ color: colors.quaternary }} />
             </div>
@@ -395,8 +454,8 @@ const DataCatalog = () => {
           <div className="bg-white p-4 rounded-lg shadow-md">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">평균 품질점수</p>
-                <p className="text-2xl font-bold" style={{ color: colors.primary }}>93%</p>
+                <p className="text-sm text-gray-600">데이터 품질점수</p>
+                <p className="text-2xl font-bold" style={{ color: colors.primary }}>94%</p>
               </div>
               <TrendingUp className="w-8 h-8" style={{ color: colors.accent1 }} />
             </div>
