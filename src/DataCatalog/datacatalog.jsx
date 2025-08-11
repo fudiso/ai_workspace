@@ -6,13 +6,13 @@ const DataCatalog = () => {
   const [selectedData, setSelectedData] = useState(null);
 
   const colors = {
-    primary: 'rgb(4, 59, 114)',
-    secondary: 'rgb(245, 130, 32)',
-    tertiary: 'rgb(0, 169, 206)',
-    quaternary: 'rgb(240, 178, 107)',
-    accent1: 'rgb(174, 99, 78)',
-    accent2: 'rgb(132, 136, 139)',
-    accent3: 'rgb(0, 134, 184)'
+    primary: 'rgb(39, 58, 146)',    // Woori WON Blue
+    secondary: 'rgb(0, 174, 239)',   // Woori WON SkyBlue
+    tertiary: 'rgb(10, 0, 72)',      // Woori WON Navy
+    quaternary: 'rgb(0, 174, 239)',  // Woori WON SkyBlue (lighter variant)
+    accent1: 'rgb(10, 0, 72)',       // Woori WON Navy (dark accent)
+    accent2: 'rgb(132, 136, 139)',   // Keep as neutral gray
+    accent3: 'rgb(39, 58, 146)'      // Woori WON Blue (alternate)
   };
 
   const categories = [
