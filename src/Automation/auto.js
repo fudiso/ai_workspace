@@ -92,6 +92,32 @@ const WorkflowAutomation = () => {
       category: '리스크',
       author: '박리스크',
       executions: 67
+    },
+    {
+      id: 4,
+      name: '예적금잔액 및 특수채권 상계처리',
+      description: '예금잔액 조회부터 AI 판단을 통한 상계처리까지 자동화된 백오피스 업무 프로세스',
+      status: 'running',
+      lastRun: '2025-08-11 09:30',
+      nextRun: '매일 09:00',
+      triggers: ['스케줄: 매일 09:00', '상계요청 접수시'],
+      actions: ['예금잔액 일괄조회', 'AI LLM 상계가능여부 판단', '상계통지서 자동발송', '상계실행 처리'],
+      category: '백오피스',
+      author: '김백오피스',
+      executions: 89
+    },
+    {
+      id: 5,
+      name: '자금지시서 기반 펀드운용 자동화',
+      description: '운용지시 메일 수신부터 펀드 매매 실행까지의 전체 프로세스를 자동화',
+      status: 'running',
+      lastRun: '2025-08-11 14:15',
+      nextRun: '실시간 모니터링',
+      triggers: ['운용지시 메일 수신', '계좌이체신청서 접수'],
+      actions: ['메일수신 및 분류', '계좌이체신청서 작성', '수탁사 메일송부', '전표작성 및 제출', '펀드매수매도 처리', '거래서류 송부'],
+      category: '운용',
+      author: '이펀드운용',
+      executions: 156
     }
   ]);
 
@@ -131,10 +157,12 @@ const WorkflowAutomation = () => {
 
   // 워크플로우 실행 로그
   const executionLogs = [
-    { id: 1, workflow: '일일 포트폴리오 성과 리포트', status: 'success', startTime: '2025-06-27 08:00:00', duration: '45초', message: '성공적으로 완료' },
-    { id: 2, workflow: '리스크 알림 시스템', status: 'success', startTime: '2025-06-27 15:22:15', duration: '12초', message: '알림 발송 완료' },
-    { id: 3, workflow: '유튜브 콘텐츠 AI 검색 최적화', status: 'error', startTime: '2025-06-26 14:30:22', duration: '8초', message: 'API 호출 실패' },
-    { id: 4, workflow: '일일 포트폴리오 성과 리포트', status: 'success', startTime: '2025-06-26 08:00:00', duration: '52초', message: '성공적으로 완료' }
+    { id: 1, workflow: '일일 포트폴리오 성과 리포트', status: 'success', startTime: '2025-08-11 08:00:00', duration: '45초', message: '성공적으로 완료' },
+    { id: 2, workflow: '예적금잔액 및 특수채권 상계처리', status: 'success', startTime: '2025-08-11 09:30:15', duration: '3분52초', message: 'AI 판단 완료, 상계통지서 발송' },
+    { id: 3, workflow: '자금지시서 기반 펀드운용 자동화', status: 'success', startTime: '2025-08-11 14:15:22', duration: '2분1초', message: '거래서류 송부 완료' },
+    { id: 4, workflow: '리스크 알림 시스템', status: 'success', startTime: '2025-08-11 15:22:15', duration: '12초', message: '알림 발송 완료' },
+    { id: 5, workflow: '유튜브 콘텐츠 AI 검색 최적화', status: 'error', startTime: '2025-08-10 14:30:22', duration: '8초', message: 'API 호출 실패' },
+    { id: 6, workflow: '일일 포트폴리오 성과 리포트', status: 'success', startTime: '2025-08-10 08:00:00', duration: '52초', message: '성공적으로 완료' }
   ];
 
   const getStatusIcon = (status) => {

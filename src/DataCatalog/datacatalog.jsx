@@ -75,7 +75,7 @@ const DataCatalog = () => {
     {
       id: 4,
       title: "카드 해외결제 트렌드 분석",
-      description: "미래에셋카드 고객의 국가별, 업종별, 시점별 해외결제 패턴 및 환율 민감도 분석",
+      description: "우리카드 고객의 국가별, 업종별, 시점별 해외결제 패턴 및 환율 민감도 분석",
       category: "consumption",
       source: "우리카드",
       updateFreq: "일일",

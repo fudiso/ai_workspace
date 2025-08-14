@@ -213,8 +213,7 @@ const AIWorkSpaceDemo = () => {
       description: "사용자 진화 여정을 설계하고 조직 내 역할을 재정의",
       details: [
         "일반 사용자 → 분석자산 소비자 → 생산자 → 전문가로의 진화 여정",
-        "IT부서는 재사용 가능한 분석자산의 생산자 역할로 전환",
-        "AI솔루션본부는 플랫폼 운영 중심 조직으로 기능 확장"
+        "기존 업무시스템 담당부서는 시스템 화면을 중심으로 재사용 가능한 분석자산의 생산자 역할로 전환",
       ]
     },
     {
@@ -339,7 +338,7 @@ const AIWorkSpaceDemo = () => {
       <header style={{ backgroundColor: colors.primary }} className="text-white py-6">
         <div className="container mx-auto px-6">
           <h1 className="text-3xl font-bold mb-2">AI WorkSpace</h1>
-          <p className="text-lg opacity-90">AI 기반 Data-Native 조직으로의 전환</p>
+          <p className="text-lg opacity-90">AI-Native 조직으로의 전환</p>
         </div>
       </header>
 
@@ -385,11 +384,11 @@ const AIWorkSpaceDemo = () => {
                   <TrendingUp className="w-8 h-8 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold mb-4" style={{ color: colors.primary }}>
-                  Data-Native 조직으로의 전환
+                  AI-Native 조직으로의 전환
                 </h2>
                 <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                  전직원이 AI의 도움으로 데이터를 자유자재로 활용하는 
-                  <span className="font-semibold text-blue-600">'Data-Native'</span> 조직으로 전환
+                  전 구성원이 AI의 도움으로 데이터를 자유자재로 활용하는 
+                  <span className="font-semibold text-blue-600">'AI-Native'</span> 조직으로 전환
                 </p>
               </div>
             </div>
@@ -464,26 +463,6 @@ const AIWorkSpaceDemo = () => {
               </div>
             </div>
 
-            {/* 추가 설명 섹션 */}
-            <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-6 border border-blue-100">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full">
-                    <Brain className="w-5 h-5 text-blue-600" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-2">
-                    Microsoft Copilot과의 시너지
-                  </h4>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    AI WorkSpace는 Microsoft Copilot과 함께 전사적 AI 기반 데이터 활용 생태계를 완성합니다. 
-                    정형·반정형 데이터에 특화된 우리의 솔루션과 문서 및 커뮤니케이션에 특화된 Copilot이 
-                    상호 보완하여 완전한 디지털 워크스페이스를 제공합니다.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         )}
 
