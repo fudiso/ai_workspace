@@ -154,11 +154,6 @@ const AIWorkSpaceDemo = () => {
 
   const problems = [
     { 
-      title: "외부 정보 단말기 의존도 심화", 
-      description: "필요한 데이터를 사내 DB에서 찾지 못해 블룸버그, Factset 등 고비용 외부 단말에 크게 의존",
-      severity: "high"
-    },
-    { 
       title: "IT 지원 업무 병목", 
       description: "데이터 관련 요청이 IT/전문 인력에 집중되어 대응 지연 발생",
       severity: "high"
@@ -166,7 +161,7 @@ const AIWorkSpaceDemo = () => {
     { 
       title: "데이터 접근성 취약", 
       description: "내부 데이터의 존재를 모르거나 접근 권한 부재로 인한 활용도 저하",
-      severity: "medium"
+      severity: "high"
     },
     { 
       title: "분석 환경 한계", 
@@ -191,7 +186,7 @@ const AIWorkSpaceDemo = () => {
   ];
 
   const solutions = [
-    { title: "통합 데이터 인프라", description: "Snowflake 기반 데이터 사일로 해소" },
+    { title: "통합 데이터 인프라", description: "GDP(그룹데이터플랫폼) 및 클라우드 DB 기반 데이터 사일로 해소" },
     { title: "AI 기반 데이터 디스커버리", description: "AI를 활용한 내부 데이터 탐색 및 활용" },
     { title: "자연어 인터페이스", description: "LLM을 통한 기술적 진입 장벽 완화" },
     { title: "코드/데이터 카탈로그", description: "조직 지식 자산의 체계적 축적 및 관리" },
@@ -200,13 +195,15 @@ const AIWorkSpaceDemo = () => {
 
   const buildingStrategies = [
     {
-      title: "오픈소스 기반 맞춤형 구축",
-      description: "상용 AI플랫폼(Palantir, Dataiku 등) 대비 낮은 비용과 높은 유연성을 확보",
+      title: "지주 주도 아키텍처 설계 및 자회사 맞춤 구현",
+      description: "지주에서 통합 방법론과 아키텍처를 정립하고, 각 자회사별 맞춤형 구현을 통한 효율적 AI 플랫폼 구축",
       details: [
+        "지주 주도로 방법론, 전략, 아키텍처 구조, 베스트 프렉티스를 정립 (필요시 전문 컨설팅 활용)",
+        "각 자회사별 고유한 사정과 환경에 맞는 맞춤형 구현 방식 적용",
+        "상용 AI플랫폼(Palantir, Dataiku 등) 장점을 반영하되, 오픈소스를 우선적으로 고려하여 비용 효율성과 유연성 확보",
         "전문 기술업체 및 웹 개발 파트너와 협업하여 핵심기능을 빠르게 구현",
-        "Palantir의 온톨로지 개념을 메타정보 관리 프레임워크에 내재화",
-        "조직의 기술 역량 강화 및 지속적인 자체 개발 역량 확보"
-      ]
+        "그룹의 기술 역량 강화 및 지속적인 자체 개발 역량 확보"
+    ]
     },
     {
       title: "변화관리 전략 및 조직 역할 재정의",
