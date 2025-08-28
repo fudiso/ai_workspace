@@ -66,7 +66,7 @@ const AIWorkSpaceDemo = () => {
     },
     {
       id: 3,
-      title: "[우리증권] 시장 급변 시 포트폴리오 리스크 분석",
+      title: "[우리투자증권] 시장 급변 시 포트폴리오 리스크 분석",
       department: "리스크관리팀",
       description: "금리 변동 등 시장 이벤트 발생 시, 자연어 질의로 즉시 위험 포트폴리오 파악 및 대응",
       detail: "최O진 차장이 '미 연준 금리 0.5% 전격 인상' 뉴스를 보고 LLM 채팅창에 '듀레이션 5년 이상 채권 비중 30% 이상 계좌 리스트와 예상 손실률' 질의. 시스템이 증권 계좌 정보와 보유 종목 DB를 동시 조회하여 고위험 계좌 목록과 리스크 지표를 테이블로 제공하고, 담당 PB들에게 Teams 알림 및 고객 상담 스크립트를 자동 생성.",
@@ -354,10 +354,10 @@ const AIWorkSpaceDemo = () => {
               { id: 'problems', label: '문제점 & 해결책' },
               { id: 'components', label: '구성 요소' },
               { id: 'strategy', label: '구축 전략' },
-              { id: 'scenarios', label: '사용 시나리오' },
-              { id: 'timeline', label: '추진 일정' },
-              { id: 'roi', label: 'ROI & 효과' },
-              { id: 'architecture', label: '시스템 아키텍처' }
+              { id: 'scenarios', label: '사용 시나리오' }
+            //  { id: 'timeline', label: '추진 일정' },
+              // { id: 'roi', label: 'ROI & 효과' },
+              // { id: 'architecture', label: '시스템 아키텍처' }
             ].map(item => (
               <button
                 key={item.id}
