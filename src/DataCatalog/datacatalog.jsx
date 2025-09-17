@@ -16,11 +16,13 @@ const DataCatalog = () => {
   };
 
   const categories = [
-    { id: 'all', name: '전체', count: 18 },
+    { id: 'all', name: '전체', count: 25 },
     { id: 'customer', name: '고객분석', count: 6 },
     { id: 'product', name: '상품현황', count: 4 },
     { id: 'consumption', name: '소비행태', count: 5 },
-    { id: 'risk', name: '리스크관리', count: 3 }
+    { id: 'risk', name: '리스크관리', count: 3 },
+    { id: 'pi_assets', name: 'PI자산', count: 4 },
+    { id: 'market', name: '시장데이터', count: 3 }
   ];
 
   const dataItems = [
@@ -167,6 +169,102 @@ const DataCatalog = () => {
       relatedCodes: ["mortgage_analysis.py", "property_risk.py", "scenario_testing.py"],
       quality: 94,
       governance: "개인정보 마스킹, 통계분석 목적 활용"
+    },
+    {
+      id: 10,
+      title: "PI 자산 포트폴리오 통합 데이터",
+      description: "우리은행 PI(자기자본투자) 자산 포트폴리오의 종목별, 섹터별 구성현황 및 리스크 지표",
+      category: "pi_assets",
+      source: "우리은행 투자금융부",
+      updateFreq: "일일",
+      records: "2.5K",
+      methodology: "포트폴리오 밸류에이션, 리스크 측정, 신용등급 매핑",
+      tags: ["PI자산", "포트폴리오", "투자"],
+      icon: <TrendingUp className="w-5 h-5" />,
+      lastUpdated: "2025-08-11 08:30",
+      relatedCodes: ["pi_portfolio_analysis.py", "asset_risk_monitoring.py", "credit_rating_tracker.py"],
+      quality: 96,
+      governance: "투자정보 보안등급 적용, 내부용 데이터"
+    },
+    {
+      id: 11,
+      title: "신용평가사 등급 정보 통합 DB",
+      description: "한신평, 나이스평가정보, S&P 등 주요 신용평가사의 기업 신용등급 변화 추이",
+      category: "pi_assets",
+      source: "한신평, 나이스평가정보, S&P, 무디스",
+      updateFreq: "일일",
+      records: "850K",
+      methodology: "등급변화 감지 알고리즘, 다중평가사 점수 통합, 등급 히스토리 관리",
+      tags: ["신용등급", "평가사", "등급변화"],
+      icon: <BarChart3 className="w-5 h-5" />,
+      lastUpdated: "2025-08-11 07:15",
+      relatedCodes: ["credit_rating_monitor.py", "rating_change_alert.py", "multi_agency_analysis.py"],
+      quality: 98,
+      governance: "신용평가사 라이선스 계약 준수"
+    },
+    {
+      id: 12,
+      title: "PI 자산 뉴스 및 공시 정보",
+      description: "PI 포트폴리오 보유 종목의 실시간 뉴스, 공시, ESG 이슈 텍스트 데이터",
+      category: "pi_assets",
+      source: "네이버뉴스, 다트, 블룸버그, ESG 전문기관",
+      updateFreq: "실시간",
+      records: "1.2M",
+      methodology: "뉴스 크롤링, 감성분석, 키워드 추출, 공시 자동분류",
+      tags: ["뉴스분석", "공시정보", "ESG"],
+      icon: <FileText className="w-5 h-5" />,
+      lastUpdated: "2025-08-11 12:45",
+      relatedCodes: ["news_sentiment_analysis.py", "dart_disclosure_parser.py", "esg_issue_tracker.py"],
+      quality: 92,
+      governance: "저작권 준수, 개인정보 제거"
+    },
+    {
+      id: 13,
+      title: "PI 자산 재무지표 Time Series",
+      description: "PI 포트폴리오 보유기업의 과거 5년간 재무비율, 성장성, 수익성 지표 시계열 데이터",
+      category: "pi_assets",
+      source: "KIS Value, FnGuide, 자체 산출",
+      updateFreq: "분기",
+      records: "125K",
+      methodology: "재무비율 표준화, 이상치 탐지, 동종업계 벤치마킹",
+      tags: ["재무지표", "시계열", "벤치마킹"],
+      icon: <TrendingUp className="w-5 h-5" />,
+      lastUpdated: "2025-08-01 16:30",
+      relatedCodes: ["financial_ratio_analysis.py", "peer_benchmarking.py", "trend_analysis.py"],
+      quality: 95,
+      governance: "재무정보 공개원칙 준수"
+    },
+    {
+      id: 14,
+      title: "시장 지수 및 환율 실시간 데이터",
+      description: "KOSPI, KOSDAQ, 주요 해외지수, 환율 등 시장 지표의 실시간 및 과거 데이터",
+      category: "market",
+      source: "한국거래소, 블룸버그, 로이터",
+      updateFreq: "실시간",
+      records: "50M",
+      methodology: "API 연동, 데이터 정합성 검증, 지연시간 최소화",
+      tags: ["시장지수", "환율", "실시간"],
+      icon: <Globe className="w-5 h-5" />,
+      lastUpdated: "2025-08-11 15:30",
+      relatedCodes: ["market_data_stream.py", "fx_rate_monitor.py", "index_correlation.py"],
+      quality: 99,
+      governance: "거래소 데이터 이용약관 준수"
+    },
+    {
+      id: 15,
+      title: "보험상품 계약자 라이프사이클 데이터",
+      description: "동양/ABL생명 보험계약자의 생애주기별 보험가입 패턴 및 해지 예측 모델 데이터",
+      category: "product",
+      source: "동양/ABL생명",
+      updateFreq: "월간",
+      records: "4.8M",
+      methodology: "생애주기 세분화, 계약유지율 분석, 해지예측 모델링",
+      tags: ["보험계약", "라이프사이클", "해지예측"],
+      icon: <Users className="w-5 h-5" />,
+      lastUpdated: "2025-08-01 10:00",
+      relatedCodes: ["lifecycle_modeling.py", "churn_prediction.py", "retention_analysis.py"],
+      quality: 93,
+      governance: "보험업법 및 개인정보보호법 준수"
     }
   ];
 
@@ -428,7 +526,7 @@ const DataCatalog = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">총 데이터셋</p>
-                <p className="text-2xl font-bold" style={{ color: colors.primary }}>18</p>
+                <p className="text-2xl font-bold" style={{ color: colors.primary }}>25</p>
               </div>
               <Database className="w-8 h-8" style={{ color: colors.secondary }} />
             </div>

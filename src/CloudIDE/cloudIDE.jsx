@@ -20,25 +20,61 @@ const CloudIDE = () => {
   const [codeContent, setCodeContent] = useState(`import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from datetime import datetime
+from datetime import datetime, timedelta
+import snowflake.connector
 
-# 샘플 데이터 생성
-dates = pd.date_range('2024-01-01', periods=100, freq='D')
-prices = np.random.randn(100).cumsum() + 100
+# PI 자산 이슈 모니터링 시스템
+# 작성자: 김리스크총괄 (리스크총괄부)
 
-df = pd.DataFrame({
-    'date': dates,
-    'price': prices,
-    'volume': np.random.randint(1000, 10000, 100)
-})
+def connect_to_snowflake():
+    """Snowflake 연결"""
+    conn = snowflake.connector.connect(
+        user='woori_user',
+        password='password',
+        account='woori_account',
+        warehouse='ANALYTICS_WH',
+        database='RISK_DB',
+        schema='PI_ASSETS'
+    )
+    return conn
 
-print("데이터 로딩 완료")
-df.head()`);
+def monitor_pi_assets():
+    """PI 자산 이슈 모니터링"""
+    conn = connect_to_snowflake()
+
+    # 최근 1개월 신용등급 하향 및 부정적 뉴스 조회
+    query = """
+    SELECT
+        p.asset_code,
+        p.asset_name,
+        p.current_value,
+        cr.credit_rating,
+        cr.rating_change,
+        n.news_sentiment,
+        n.risk_score
+    FROM pi_portfolio p
+    LEFT JOIN credit_ratings cr ON p.asset_code = cr.asset_code
+    LEFT JOIN news_analysis n ON p.asset_code = n.asset_code
+    WHERE cr.rating_date >= DATEADD(month, -1, CURRENT_DATE())
+        AND (cr.rating_change < 0 OR n.risk_score > 3.0)
+    ORDER BY n.risk_score DESC
+    """
+
+    df = pd.read_sql(query, conn)
+    print(f"⚠️  주의 필요 자산: {len(df)}개 발견")
+
+    return df
+
+# 실행
+result_df = monitor_pi_assets()
+print("PI 자산 모니터링 완료")
+result_df.head()`);
   
   const [consoleOutput, setConsoleOutput] = useState([
-    { type: 'output', content: '데이터 로딩 완료' },
-    { type: 'table', content: 'DataFrame with 100 rows and 3 columns' },
-    { type: 'info', content: 'Python 3.9.7 | Snowflake connector ready' }
+    { type: 'output', content: '⚠️  주의 필요 자산: 3개 발견' },
+    { type: 'output', content: 'PI 자산 모니터링 완료' },
+    { type: 'table', content: 'asset_code  asset_name      current_value  credit_rating  rating_change  risk_score\nABC001     ABC기업           850억           BBB+           -1           4.2\nDEF002     DEF코퍼레이션     420억           A-             0            3.8\nGHI003     GHI홀딩스         320억           BBB            -1           4.5' },
+    { type: 'info', content: 'Python 3.9.7 | Snowflake connector ready | PI Assets DB connected' }
   ]);
 
   const [aiHistory, setAiHistory] = useState([
@@ -46,25 +82,40 @@ df.head()`);
   ]);
 
   const [files] = useState([
-    { name: 'notebook1.py', type: 'python', active: true },
-    { name: 'data_analysis.py', type: 'python' },
-    { name: 'portfolio_backtest.py', type: 'python' },
-    { name: 'query.sql', type: 'sql' }
+    { name: 'pi_asset_monitoring.py', type: 'python', active: true },
+    { name: 'credit_rating_analysis.py', type: 'python' },
+    { name: 'customer_segmentation.py', type: 'python' },
+    { name: 'portfolio_risk_query.sql', type: 'sql' }
   ]);
 
   const [folderStructure] = useState([
     {
-      name: 'projects',
+      name: 'pi_asset_projects',
       expanded: true,
       children: [
-        { name: 'portfolio_analysis', type: 'folder', expanded: true, children: [
-          { name: 'backtest.py', type: 'file' },
-          { name: 'risk_analysis.py', type: 'file' }
+        { name: 'risk_monitoring', type: 'folder', expanded: true, children: [
+          { name: 'pi_asset_monitoring.py', type: 'file' },
+          { name: 'credit_rating_tracker.py', type: 'file' },
+          { name: 'news_sentiment_analysis.py', type: 'file' }
         ]},
-        { name: 'market_data', type: 'folder', children: [
-          { name: 'fetcher.py', type: 'file' },
-          { name: 'cleaner.py', type: 'file' }
+        { name: 'customer_analytics', type: 'folder', children: [
+          { name: 'customer_segmentation.py', type: 'file' },
+          { name: 'card_recommendation.py', type: 'file' },
+          { name: 'lifecycle_analysis.py', type: 'file' }
+        ]},
+        { name: 'workflow_automation', type: 'folder', children: [
+          { name: 'content_automation.py', type: 'file' },
+          { name: 'report_generator.py', type: 'file' }
         ]}
+      ]
+    },
+    {
+      name: 'data_queries',
+      expanded: false,
+      children: [
+        { name: 'pi_portfolio_queries.sql', type: 'file' },
+        { name: 'credit_rating_queries.sql', type: 'file' },
+        { name: 'customer_data_queries.sql', type: 'file' }
       ]
     },
     {
@@ -72,7 +123,8 @@ df.head()`);
       expanded: false,
       children: [
         { name: 'financial_utils.py', type: 'file' },
-        { name: 'db_connector.py', type: 'file' }
+        { name: 'snowflake_connector.py', type: 'file' },
+        { name: 'notification_utils.py', type: 'file' }
       ]
     }
   ]);
@@ -80,9 +132,11 @@ df.head()`);
   const executeCode = () => {
     setConsoleOutput(prev => [
       ...prev,
-      { type: 'command', content: '>>> 코드 실행 중...' },
-      { type: 'output', content: '데이터 로딩 완료' },
-      { type: 'table', content: '       date      price    volume\n0  2024-01-01   99.50     3421\n1  2024-01-02  101.23     5670\n2  2024-01-03   98.77     4321\n3  2024-01-04  102.45     6789\n4  2024-01-05   99.88     2345' }
+      { type: 'command', content: '>>> PI 자산 모니터링 실행 중...' },
+      { type: 'output', content: '✅ Snowflake 연결 성공' },
+      { type: 'output', content: '⚠️  주의 필요 자산: 3개 발견' },
+      { type: 'output', content: 'PI 자산 모니터링 완료' },
+      { type: 'table', content: 'asset_code  asset_name      current_value  credit_rating  rating_change  risk_score\nABC001     ABC기업           850억           BBB+           -1           4.2\nDEF002     DEF코퍼레이션     420억           A-             0            3.8\nGHI003     GHI홀딩스         320억           BBB            -1           4.5' }
     ]);
   };
 
@@ -171,15 +225,19 @@ df.head()`);
                 <div className="space-y-1 text-sm">
                   <div className="flex items-center p-2 hover:bg-gray-100 rounded cursor-pointer">
                     <Database size={14} className="mr-2" style={{ color: colors.tertiary }} />
-                    <span>펀드 성과 데이터</span>
+                    <span>PI 자산 포트폴리오</span>
                   </div>
                   <div className="flex items-center p-2 hover:bg-gray-100 rounded cursor-pointer">
                     <Database size={14} className="mr-2" style={{ color: colors.tertiary }} />
-                    <span>시장 지수 데이터</span>
+                    <span>신용평가사 등급정보</span>
                   </div>
                   <div className="flex items-center p-2 hover:bg-gray-100 rounded cursor-pointer">
                     <Database size={14} className="mr-2" style={{ color: colors.tertiary }} />
-                    <span>ESG 평가 데이터</span>
+                    <span>PI 자산 뉴스 및 공시</span>
+                  </div>
+                  <div className="flex items-center p-2 hover:bg-gray-100 rounded cursor-pointer">
+                    <Database size={14} className="mr-2" style={{ color: colors.tertiary }} />
+                    <span>고객 세그먼트 데이터</span>
                   </div>
                 </div>
               </div>

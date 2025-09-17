@@ -34,76 +34,62 @@ const AIWorkSpaceDemo = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // 기존 scenarios 배열 전체 삭제 후 아래로 교체
+  // 시나리오 문서 기반으로 업데이트된 scenarios 배열
   const scenarios = [
     {
       id: 1,
-      title: "[우리은행] 상품 포트폴리오 성과 분석 - AI 코드 어시스턴트 활용",
-      department: "상품기획팀",
-      description: "매일 반복되는 펀드랩, WM상품, 신탁상품의 성과 데이터 수집 및 일일 보고서 작성을 AI 기반 자동화로 전환",
-      detail: "김O수 대리가 AI Code Assistant에게 자연어로 '펀드랩 상품들의 최근 1개월 수익률과 자금 유출입 현황 분석'을 요청하면, 데이터 카탈로그 메타정보를 참조하여 SQL/Python 코드를 자동 생성. 클라우드 IDE에서 벤치마크 지수 상대성과 분석 추가 후, 검증된 코드를 카탈로그에 자산화하고 워크플로우 자동화로 매일 오전 8시 실행 및 Teams/이메일 자동 발송.",
+      title: "[우리은행] PI 자산 이슈 모니터링 - AI 코드 어시스턴트 활용",
+      department: "리스크총괄부",
+      description: "PI(자기자본투자) 자산 포트폴리오의 주요 리스크 지표를 자동 모니터링하여 중요한 이슈를 놓치지 않고 신속하게 대응",
+      detail: "우리은행 리스크총괄부 김O수 대리는 매주 여러 시장 분석 보고서, 개별 자산의 뉴스, 공시 자료를 수동으로 Excel로 정리하는 업무를 수행하고 있었습니다. AI Code Assistant에게 '현재 보유 중인 PI 자산 중에서 최근 1개월간 신용등급이 하향 조정되었거나, 부정적 뉴스가 보도된 자산 리스트를 보여줘'라고 요청하면, 데이터 카탈로그의 메타정보를 참조하여 PI 포트폴리오 데이터, 신용평가사 등급 정보, 뉴스 데이터를 조회하는 SQL 쿼리와 Python 코드를 자동 생성합니다. 검증된 모니터링 분석 코드는 'PI 자산 일일 이슈 모니터링'으로 코드 카탈로그에 등록하여 전사 자산화하고, 워크플로우에 등록하여 매일 오전 8시 자동 실행됩니다.",
       steps: [
-        "AI Code Assistant에 자연어로 데이터 질의",
-        "데이터 카탈로그 기반 SQL/Python 코드 자동 생성",
-        "클라우드 IDE에서 코드 수정 및 벤치마크 분석 추가",
-        "코드 카탈로그 자산화 및 전사 공유",
-        "워크플로우 자동화 등록 및 결과 자동 발송"
+        "AI Code Assistant에 자연어로 PI 자산 이슈 질의",
+        "데이터 카탈로그 참조 SQL/Python 코드 자동 생성",
+        "클라우드 IDE에서 ABC기업 상세 분석 코드 추가",
+        "PI 자산 일일 이슈 모니터링으로 코드 카탈로그 등록",
+        "워크플로우 자동화로 매일 실행 및 UC메신저/이메일 알림"
       ]
     },
     {
       id: 2,
       title: "[우리카드] 고객 세그먼트 분석 - 코드 카탈로그 활용",
       department: "상품마케팅팀",
-      description: "신용등급, 소비패턴, 연령대별 최적 카드 상품 추천을 위한 개인화 마케팅 전략 수립",
-      detail: "박O영 과장이 코드 카탈로그에서 '고객 세그먼트 분석' 코드를 불러와, AI Code Assistant에 '20-30대 직장인 중 온라인 쇼핑 이용률이 높은 고객군 추출 및 적합한 카드 상품 매칭'을 요청. 클라우드 IDE에서 수정된 코드 실행 후 검증하여 '연령대별 맞춤형 카드 추천 시스템'으로 코드 카탈로그에 재저장.",
+      description: "고객의 신용등급, 소비패턴, 연령대별로 최적의 카드 상품을 추천하는 개인화 마케팅 전략을 수립",
+      detail: "우리카드 상품마케팅팀 박O영 과장은 고객 세분화 분석에 많은 시간이 소요되는 문제를 해결하기 위해 AI WorkSpace 포털에 접속하여 '코드 카탈로그'에서 '고객 세그먼트 분석' 코드를 불러옵니다. 이 코드는 카드 이용 데이터, 고객 정보 DB에서 고객별 특성 정보를 가져오는 기능을 포함하고 있습니다. AI Code Assistant에게 '20-30대 직장인 중 온라인 쇼핑 이용률이 높은 고객군을 추출하고, 이들에게 적합한 카드 상품을 매칭해줘'와 같은 자연어 질의를 통해 코드를 수정하고, 클라우드 IDE 실행 환경에서 결과를 확인한 후 '연령대별 맞춤형 카드 추천 시스템'으로 코드 카탈로그에 저장하여 자산화합니다.",
       steps: [
         "코드 카탈로그에서 고객 세그먼트 분석 코드 확보",
-        "AI Code Assistant로 특정 고객군 추출 조건 추가",
+        "AI Code Assistant로 20-30대 직장인 온라인쇼핑 고객군 추출",
         "카드 상품 매칭 로직 개발 및 코드 수정",
-        "클라우드 IDE에서 실행 및 결과 검증",
-        "맞춤형 추천 시스템으로 코드 카탈로그 재저장"
+        "클라우드 IDE에서 실행 및 결과 확인",
+        "연령대별 맞춤형 카드 추천 시스템으로 코드 카탈로그 저장"
       ]
     },
     {
       id: 3,
-      title: "[우리투자증권] 시장 급변 시 포트폴리오 리스크 분석",
+      title: "[우리증권] 시장 급변 시 포트폴리오 리스크 분석",
       department: "리스크관리팀",
-      description: "금리 변동 등 시장 이벤트 발생 시, 자연어 질의로 즉시 위험 포트폴리오 파악 및 대응",
-      detail: "최O진 차장이 '미 연준 금리 0.5% 전격 인상' 뉴스를 보고 LLM 채팅창에 '듀레이션 5년 이상 채권 비중 30% 이상 계좌 리스트와 예상 손실률' 질의. 시스템이 증권 계좌 정보와 보유 종목 DB를 동시 조회하여 고위험 계좌 목록과 리스크 지표를 테이블로 제공하고, 담당 PB들에게 Teams 알림 및 고객 상담 스크립트를 자동 생성.",
+      description: "시장 급변 상황에서 금리 변동에 민감한 고객 포트폴리오를 즉시 파악하고 신속한 고객 대응을 수행",
+      detail: "'미 연준, 금리 0.5% 전격 인상'이라는 뉴스를 보고 우리증권 리스크관리팀 최O진 차장은 금리 변동에 민감한 고객 포트폴리오를 즉시 파악하고자 합니다. AI WorkSpace LLM 채팅창에 '현재 우리증권 고객들의 포트폴리오 중에서, 듀레이션이 5년 이상인 채권 비중이 30% 이상인 계좌 리스트와 예상 손실률을 알려줘'라고 입력하면, 시스템은 증권 계좌 정보 DB와 보유 종목 DB를 동시에 조회하여 해당 고객 계좌 목록과 리스크 지표를 즉시 테이블 형태로 제공합니다. 분석 결과를 바탕으로 '고위험 계좌 담당 PB들에게 즉시 Teams로 알림 메시지를 보내고, 고객 상담 스크립트를 자동 생성해줘'라고 지시하여 신속한 고객 대응을 수행합니다.",
       steps: [
         "시장 이벤트 발생 시 자연어로 리스크 조건 질의",
-        "증권 계좌 및 보유 종목 DB 동시 조회",
+        "증권 계좌 정보 DB와 보유 종목 DB 동시 조회",
         "고위험 계좌 목록 및 리스크 지표 테이블 제공",
-        "담당 PB Teams 알림 자동 발송",
+        "담당 PB Teams 알림 메시지 자동 발송",
         "고객 상담 스크립트 자동 생성 및 배포"
       ]
     },
     {
       id: 4,
-      title: "[동양생명] 보험상품 추천 콘텐츠 자동화",
+      title: "[동양/ABL생명] 보험상품 추천 콘텐츠 자동화",
       department: "상품기획팀",
-      description: "보험상품 영상 콘텐츠 등록 시, AI가 자동으로 스크립트·상품정보 추출하여 AI챗봇 연동",
-      detail: "이O수 팀장이 '2025년 연금보험 상품 가이드' 영상 제작 후, AI WorkSpace 포털에서 '보험상품 콘텐츠 등록 자동화' 워크플로우 실행. 영상 URL 입력만으로 제목·설명·자막을 자동 추출하고, 상품 DB 연동으로 LLM이 고객 FAQ 형태로 변환하여 상담 시스템에 저장. 고객이 모바일앱에서 '연금보험 추천' 문의 시 AI챗봇이 신규 콘텐츠와 맞춤 정보를 제공.",
+      description: "보험상품 영상 콘텐츠를 제작하여 홈페이지, 모바일앱, AI챗봇에서 효과적으로 활용할 수 있도록 자동화",
+      detail: "우리생명 상품기획팀 이O수 팀장은 '2025년 연금보험 상품 가이드' 영상 콘텐츠를 제작하고 홈페이지와 모바일앱에 게시하고자 합니다. 고객 상담센터 AI챗봇에서도 해당 콘텐츠를 효과적으로 활용하기 위해 동영상 스크립트와 상품 정보를 구조화해야 했습니다. AI WorkSpace 포털에서 '보험상품 콘텐츠 등록 자동화' 워크플로우를 실행하고 영상 URL과 상품코드 정보를 입력하면, 워크플로우는 입력된 URL에서 영상 제목, 설명, 자막 정보를 자동 추출하고, 상품 DB에서 해당 보험상품의 상세 정보를 가져와 LLM으로 고객 FAQ 형태로 변환하여 구조화된 정보를 상담 시스템 DB에 저장합니다. 고객이 모바일앱에서 '연금보험 추천'이라고 문의하면 AI챗봇이 새롭게 등록된 영상 콘텐츠와 함께 맞춤형 상품 정보를 제공합니다.",
       steps: [
-        "보험상품 콘텐츠 등록 워크플로우 실행",
-        "영상 URL 입력으로 제목·설명·자막 자동 추출",
-        "상품 DB 연동 및 LLM 기반 FAQ 변환",
-        "상담 시스템 DB 자동 저장",
+        "보험상품 콘텐츠 등록 자동화 워크플로우 실행",
+        "영상 URL에서 제목, 설명, 자막 정보 자동 추출",
+        "상품 DB 연동 및 LLM 고객 FAQ 형태 변환",
+        "구조화된 정보를 상담 시스템 DB 저장",
         "AI챗봇 연동으로 맞춤형 상품 정보 제공"
-      ]
-    },
-    {
-      id: 5,
-      title: "[우리금융지주 IT-현업 협업] 그룹 통합 리포팅 시스템 구축",
-      department: "IT부서-현업 협업",
-      description: "IT가 제공한 그룹 재무분석 패키지를 현업이 직접 확장·활용하여 자산화 및 그룹사 공유",
-      detail: "IT부서가 그룹사 실적 집계 시스템의 '재무 분석' 기능을 코드 카탈로그에 패키지로 제공. 우리은행 기획팀이 이를 가져와 특정 기간·사업부문 성과 분석을 직접 수행하고, AI Code Assistant로 '디지털 채널별 성과 기여도' 분석 로직을 추가. 완성된 분석 툴을 그룹 전체 활용을 위해 코드 카탈로그에 업로드하여 우리카드, 우리증권, 우리생명에서도 공유 활용.",
-      steps: [
-        "IT부서의 그룹 재무분석 패키지 코드 카탈로그 제공",
-        "현업의 주도적 분석 환경 구축 및 실행",
-        "AI Code Assistant로 디지털 채널별 성과 분석 로직 추가",
-        "현업 자체적 확장 기능 구현 및 검증",
-        "그룹사 공유를 위한 코드 카탈로그 업로드"
       ]
     }
   ];
@@ -379,88 +365,211 @@ const AIWorkSpaceDemo = () => {
         {/* Core Concept Section */}
         {activeSection === 'concept' && (
           <div className="space-y-8">
-            {/* Hero Section - 프로젝트 비전 */}
+            {/* Hero Section - AI-Native 비전 */}
             <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-blue-50 rounded-2xl p-8 shadow-lg border border-blue-100">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100 to-transparent rounded-full transform translate-x-8 -translate-y-8 opacity-50"></div>
               <div className="relative text-center">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mb-6 shadow-lg">
-                  <TrendingUp className="w-8 h-8 text-white" />
+                  <Brain className="w-8 h-8 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold mb-4" style={{ color: colors.primary }}>
-                  AI-Native 조직으로의 전환
+                  AI-Native 조직: 패러다임의 전환
                 </h2>
-                <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                  전 구성원이 AI의 도움으로 데이터를 자유자재로 활용하는 
-                  <span className="font-semibold text-blue-600">'AI-Native'</span> 조직으로 전환
+                <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-4">
+                  AI가 <span className="font-semibold text-blue-600">특별한 프로젝트가 아닌 일상적인 업무 도구</span>로 자연스럽게 활용되는 조직
                 </p>
+                <div className="bg-white/80 rounded-lg p-4 max-w-3xl mx-auto">
+                  <p className="text-sm text-gray-600 italic">
+                    "현업 구성원이 직접 AI를 활용하여 업무를 혁신할 수 있는 환경"이 장기적 경쟁력의 핵심
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* 통일된 카드 그리드 레이아웃 */}
-            <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
-              {/* 핵심 문제의식 카드 */}
-              <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="h-2 bg-gradient-to-r from-blue-400 to-sky-400"></div>
-                <div className="p-6">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-100 to-sky-100 rounded-lg mb-4">
-                    <AlertTriangle className="w-6 h-6" style={{ color: colors.secondary }} />
+            {/* AI-Native 정의 섹션 */}
+            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8">
+              <h3 className="text-2xl font-bold mb-6 text-center" style={{ color: colors.primary }}>
+                AI-Native란 무엇인가?
+              </h3>
+
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                {/* 기존 방식 */}
+                <div className="bg-red-50 rounded-lg p-6 border border-red-200">
+                  <h4 className="text-lg font-bold mb-4 text-red-700 flex items-center">
+                    <AlertTriangle className="w-5 h-5 mr-2" />
+                    기존 방식 (AI 프로젝트)
+                  </h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center text-sm text-red-600">
+                      <ArrowRight className="w-4 h-4 mr-2 flex-shrink-0" />
+                      현업 요청 → AI 전문가 분석 → IT 개발 → 시스템 구축 → 현업 사용
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 text-xs text-red-700 mt-4">
+                      <div className="text-center bg-red-100 py-2 rounded">
+                        <div className="font-semibold">소요시간</div>
+                        <div>3-6개월</div>
+                      </div>
+                      <div className="text-center bg-red-100 py-2 rounded">
+                        <div className="font-semibold">비용</div>
+                        <div>수억원</div>
+                      </div>
+                      <div className="text-center bg-red-100 py-2 rounded">
+                        <div className="font-semibold">결과</div>
+                        <div>고정된 기능</div>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-bold mb-3" style={{ color: colors.secondary }}>
-                    핵심 문제
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    "데이터를 찾기 어렵고, 분석 역량은 제한적이고, 노하우가 축적되지 못하는" 구조적 문제
-                  </p>
-                  <div className="mt-4 pt-4 border-t border-gray-100">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
-                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-                      해결 필요
-                    </span>
+                </div>
+
+                {/* AI-Native 방식 */}
+                <div className="bg-green-50 rounded-lg p-6 border border-green-200">
+                  <h4 className="text-lg font-bold mb-4 text-green-700 flex items-center">
+                    <CheckCircle className="w-5 h-5 mr-2" />
+                    AI-Native 방식
+                  </h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center text-sm text-green-600">
+                      <ArrowRight className="w-4 h-4 mr-2 flex-shrink-0" />
+                      현업 아이디어 → AI 도구 활용 → 즉시 분석/자동화 → 지속 개선
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 text-xs text-green-700 mt-4">
+                      <div className="text-center bg-green-100 py-2 rounded">
+                        <div className="font-semibold">소요시간</div>
+                        <div>수시간-수일</div>
+                      </div>
+                      <div className="text-center bg-green-100 py-2 rounded">
+                        <div className="font-semibold">비용</div>
+                        <div>최소화</div>
+                      </div>
+                      <div className="text-center bg-green-100 py-2 rounded">
+                        <div className="font-semibold">결과</div>
+                        <div>유연한 진화</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* AI WorkSpace 솔루션 카드 */}
-              <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="h-2 bg-gradient-to-r from-blue-400 to-cyan-400"></div>
-                <div className="p-6">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-lg mb-4">
-                    <Database className="w-6 h-6" style={{ color: colors.primary }} />
+              {/* 핵심 변화 */}
+              <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
+                <h4 className="text-lg font-bold mb-4" style={{ color: colors.primary }}>
+                  패러다임 전환의 핵심
+                </h4>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="text-center">
+                    <div className="w-12 h-12 mx-auto mb-3 bg-blue-500 rounded-full flex items-center justify-center">
+                      <Users className="w-6 h-6 text-white" />
+                    </div>
+                    <h5 className="font-semibold mb-2">주체의 전환</h5>
+                    <p className="text-sm text-gray-600">AI 전문가 중심 → <strong>현업 구성원 중심</strong></p>
                   </div>
-                  <h3 className="text-lg font-bold mb-3" style={{ color: colors.primary }}>
-                    AI WorkSpace 솔루션
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    AI 기반 데이터 <strong>디스커버리 / 분석 / 자동화</strong> 로 구조적 문제 해결
-                  </p>
-                  <div className="mt-4 pt-4 border-t border-gray-100">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
-                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-                      핵심 솔루션
-                    </span>
+                  <div className="text-center">
+                    <div className="w-12 h-12 mx-auto mb-3 bg-blue-500 rounded-full flex items-center justify-center">
+                      <Zap className="w-6 h-6 text-white" />
+                    </div>
+                    <h5 className="font-semibold mb-2">속도의 전환</h5>
+                    <p className="text-sm text-gray-600">몇 개월 대기 → <strong>즉시 실행</strong></p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-12 h-12 mx-auto mb-3 bg-blue-500 rounded-full flex items-center justify-center">
+                      <TrendingUp className="w-6 h-6 text-white" />
+                    </div>
+                    <h5 className="font-semibold mb-2">확장성의 전환</h5>
+                    <p className="text-sm text-gray-600">제한적 확장 → <strong>무한 확장 가능</strong></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 현재 상황과 미래 도전과제 */}
+            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8">
+              <h3 className="text-2xl font-bold mb-6 text-center" style={{ color: colors.primary }}>
+                왜 AI-Native 전환이 필요한가?
+              </h3>
+
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                {/* 현재의 성공과 한계 */}
+                <div className="space-y-4">
+                  <h4 className="text-lg font-bold" style={{ color: colors.secondary }}>
+                    현재: 성공하고 있지만, 지속가능하지 않다
+                  </h4>
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                    <h5 className="font-semibold text-yellow-800 mb-2 flex items-center">
+                      <CheckCircle className="w-4 h-4 mr-2" />
+                      Quick-Win 전략의 성공
+                    </h5>
+                    <ul className="text-sm text-yellow-700 space-y-1">
+                      <li>• GenAI 플랫폼 도입</li>
+                      <li>• AX추진을 위한 유스케이스 선별</li>
+                      <li>• 각 자회사별 추진 계획 수립</li>
+                    </ul>
+                  </div>
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <h5 className="font-semibold text-red-800 mb-2 flex items-center">
+                      <AlertTriangle className="w-4 h-4 mr-2" />
+                      구조적 한계
+                    </h5>
+                    <ul className="text-sm text-red-700 space-y-1">
+                      <li>• <strong>확장성 문제:</strong> AI 전문가를 계속 늘릴 수 없음</li>
+                      <li>• <strong>업무 지연:</strong> IT 부서에 2-3개월 대기</li>
+                      <li>• <strong>노하우 분산:</strong> 개인 PC Excel 수준에 머물러</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* 미래 도전과제 */}
+                <div className="space-y-4">
+                  <h4 className="text-lg font-bold" style={{ color: colors.tertiary }}>
+                    미래: AI 유스케이스의 폭증
+                  </h4>
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <div className="text-center mb-4">
+                      <div className="text-3xl font-bold" style={{ color: colors.primary }}>
+                        🚀
+                      </div>
+                      <p className="text-sm text-blue-700 font-medium">
+                        폭증하는 AI 유스케이스 수요
+                      </p>
+                    </div>
+                    <div className="text-xs text-blue-600 space-y-2">
+                      <p>현재의 전문가 중심 접근법으로는</p>
+                      <p className="font-semibold text-blue-700">이러한 수요를 충족하기 어려움</p>
+                      <div className="border-t border-blue-200 pt-2 mt-2">
+                        <p className="font-semibold text-blue-800">
+                          → 현업 구성원이 직접 AI를 활용할 수 있는 환경이 절대적으로 필요
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* AI WorkSpace 핵심 기능 카드*/}
-              <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="h-2 bg-gradient-to-r from-cyan-400 to-teal-400"></div>
-                <div className="p-6">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-100 to-teal-100 rounded-lg mb-4">
-                    <Search className="w-6 h-6" style={{ color: colors.tertiary }} />
+              {/* AI-Native 비전 */}
+              <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 border border-green-200">
+                <h4 className="text-lg font-bold mb-4 text-center" style={{ color: colors.primary }}>
+                  AI-Native 비전: 모든 구성원이 AI를 도구처럼 사용하는 조직
+                </h4>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-3 bg-green-500 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">90%</span>
+                    </div>
+                    <h5 className="font-semibold mb-2">일반 사용자</h5>
+                    <p className="text-xs text-gray-600">자연어로 데이터 질의<br/>"작년 대비 이번달 대출 현황 보여줘"</p>
                   </div>
-                  <h3 className="text-lg font-bold mb-3" style={{ color: colors.tertiary }}>
-                    AI WorkSpace 핵심 기능
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    <strong>자연어 질의, AI 코드 생성, 자동화</strong>를 통해 
-                    누구나 쉽게 데이터를 활용할 수 있는 통합 플랫폼
-                  </p>
-                  <div className="mt-4 pt-4 border-t border-gray-100">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-cyan-50 text-cyan-700">
-                      <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
-                      핵심 기능
-                    </span>
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-3 bg-blue-500 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">8%</span>
+                    </div>
+                    <h5 className="font-semibold mb-2">고급 사용자</h5>
+                    <p className="text-xs text-gray-600">AI 어시스턴트로 코드 수정<br/>새로운 분석 로직 기여</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-3 bg-purple-500 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">2%</span>
+                    </div>
+                    <h5 className="font-semibold mb-2">AI 전문가</h5>
+                    <p className="text-xs text-gray-600">복잡한 분석 개발<br/>플랫폼 운영 및 품질 관리</p>
                   </div>
                 </div>
               </div>

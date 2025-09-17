@@ -21,94 +21,114 @@ const AIWorkSpaceDemo = () => {
   const [showCorrelation, setShowCorrelation] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
 
-  // 가상의 데이터
+  // 가상의 데이터 - PI 자산 관련
   const chartData = [
-    { date: '2024-06', kospi: 2650, euro_rate: 1450, fund_price: 1820 },
-    { date: '2024-07', kospi: 2720, euro_rate: 1470, fund_price: 1845 },
-    { date: '2024-08', kospi: 2680, euro_rate: 1440, fund_price: 1830 },
-    { date: '2024-09', kospi: 2750, euro_rate: 1480, fund_price: 1860 },
-    { date: '2024-10', kospi: 2800, euro_rate: 1500, fund_price: 1880 },
-    { date: '2024-11', kospi: 2850, euro_rate: 1520, fund_price: 1905 },
-    { date: '2024-12', kospi: 2900, euro_rate: 1540, fund_price: 1920 },
-    { date: '2025-01', kospi: 2920, euro_rate: 1560, fund_price: 1930 },
-    { date: '2025-02', kospi: 2880, euro_rate: 1530, fund_price: 1910 },
-    { date: '2025-03', kospi: 2950, euro_rate: 1580, fund_price: 1950 },
-    { date: '2025-04', kospi: 3000, euro_rate: 1600, fund_price: 1970 },
-    { date: '2025-05', kospi: 3050, euro_rate: 1620, fund_price: 1995 }
+    { date: '2024-06', pi_asset_value: 5650, credit_score: 85, risk_level: 3.2 },
+    { date: '2024-07', pi_asset_value: 5720, credit_score: 84, risk_level: 3.4 },
+    { date: '2024-08', pi_asset_value: 5680, credit_score: 83, risk_level: 3.6 },
+    { date: '2024-09', pi_asset_value: 5750, credit_score: 82, risk_level: 3.8 },
+    { date: '2024-10', pi_asset_value: 5800, credit_score: 81, risk_level: 4.0 },
+    { date: '2024-11', pi_asset_value: 5850, credit_score: 80, risk_level: 4.2 },
+    { date: '2024-12', pi_asset_value: 5900, credit_score: 79, risk_level: 4.5 },
+    { date: '2025-01', pi_asset_value: 5920, credit_score: 78, risk_level: 4.7 },
+    { date: '2025-02', pi_asset_value: 5880, credit_score: 77, risk_level: 4.9 },
+    { date: '2025-03', pi_asset_value: 5950, credit_score: 76, risk_level: 5.1 },
+    { date: '2025-04', pi_asset_value: 6000, credit_score: 75, risk_level: 5.3 },
+    { date: '2025-05', pi_asset_value: 6050, credit_score: 74, risk_level: 5.5 }
   ];
 
   const correlationData = [
-    { name: 'KOSPI vs EUR', correlation: 0.85 },
-    { name: 'KOSPI vs Fund', correlation: 0.92 },
-    { name: 'EUR vs Fund', correlation: 0.78 }
+    { name: '신용점수 vs 자산가치', correlation: -0.72 },
+    { name: '신용점수 vs 리스크수준', correlation: -0.89 },
+    { name: '자산가치 vs 리스크수준', correlation: 0.65 }
   ];
 
-  const sampleCode = `# SQL to fetch data from Snowflake
+  const sampleCode = `# PI 자산 이슈 모니터링 SQL
 sql_query = """
-SELECT 
-    date,
-    euro_rate,
-    kospi_index,
-    fund_return
-FROM aianalytics.market_data 
-WHERE date >= '2024-06-01'
-ORDER BY date;
+SELECT
+    p.asset_code,
+    p.asset_name,
+    p.current_value,
+    cr.credit_rating,
+    cr.rating_change,
+    cr.rating_date,
+    n.news_sentiment,
+    n.risk_score
+FROM pi_portfolio p
+LEFT JOIN credit_ratings cr ON p.asset_code = cr.asset_code
+LEFT JOIN news_analysis n ON p.asset_code = n.asset_code
+WHERE cr.rating_date >= DATEADD(month, -1, CURRENT_DATE())
+    AND (cr.rating_change < 0 OR n.risk_score > 3.0)
+ORDER BY cr.rating_date DESC, n.risk_score DESC;
 """
 
 # Connect to Snowflake and fetch data
 df = snowflake.get_data(sql_query)
 
-# Data preprocessing
-df['date'] = pd.to_datetime(df['date'])
-df = df.set_index('date')
+# 신용등급 하향 자산 필터링
+downgraded_assets = df[df['rating_change'] < 0]
 
-# Create visualization
+# 부정적 뉴스 자산 필터링
+negative_news_assets = df[df['risk_score'] > 3.0]
+
+# 시각화
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-fig, ax = plt.subplots(figsize=(12, 6))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
 
-# Plot multiple lines
-ax.plot(df.index, df['kospi_index'], label='KOSPI Index', linewidth=2)
-ax.plot(df.index, df['euro_rate'], label='EUR/KRW Rate', linewidth=2)
-ax.plot(df.index, df['fund_return'], label='Fund Return (%)', linewidth=2)
+# 신용등급 변화 차트
+ax1.bar(downgraded_assets['asset_name'], downgraded_assets['rating_change'],
+        color='red', alpha=0.7)
+ax1.set_title('PI 자산 신용등급 하향 현황')
+ax1.set_xlabel('자산명')
+ax1.set_ylabel('등급 변화')
+ax1.tick_params(axis='x', rotation=45)
 
-ax.set_title('Financial Data Trends - Last 12 Months')
-ax.set_xlabel('Date')
-ax.set_ylabel('Value')
-ax.legend()
-ax.grid(True, alpha=0.3)
+# 리스크 점수 차트
+ax2.scatter(df['current_value'], df['risk_score'],
+           c=df['rating_change'], cmap='RdYlGn_r', s=100, alpha=0.7)
+ax2.set_title('자산가치 vs 리스크 점수')
+ax2.set_xlabel('현재 자산가치 (억원)')
+ax2.set_ylabel('리스크 점수')
 
 plt.tight_layout()
 plt.show()
 
-print("✅ Data successfully retrieved and visualized!")
-print(f"📊 Total records: {len(df)}")
-print(f"📈 KOSPI range: {df['kospi_index'].min():.0f} - {df['kospi_index'].max():.0f}")`;
+print("✅ PI 자산 이슈 모니터링 완료!")
+print(f"📊 신용등급 하향 자산: {len(downgraded_assets)}개")
+print(f"⚠️  높은 리스크 자산: {len(negative_news_assets)}개")`;
 
-  const correlationCode = `# Correlation Analysis
+  const correlationCode = `# PI 자산 상관관계 분석
 import numpy as np
 
-# Calculate correlation matrix
-correlation_matrix = df[['kospi_index', 'euro_rate', 'fund_return']].corr()
+# 상관관계 매트릭스 계산
+correlation_matrix = df[['current_value', 'credit_rating', 'risk_score']].corr()
 
-print("🔍 Correlation Analysis Results:")
-print("=" * 40)
-print(f"KOSPI ↔ EUR Rate: {correlation_matrix.loc['kospi_index', 'euro_rate']:.3f}")
-print(f"KOSPI ↔ Fund Return: {correlation_matrix.loc['kospi_index', 'fund_return']:.3f}")
-print(f"EUR Rate ↔ Fund Return: {correlation_matrix.loc['euro_rate', 'fund_return']:.3f}")
+print("🔍 PI 자산 상관관계 분석 결과:")
+print("=" * 50)
+print(f"자산가치 ↔ 신용등급: {correlation_matrix.loc['current_value', 'credit_rating']:.3f}")
+print(f"자산가치 ↔ 리스크점수: {correlation_matrix.loc['current_value', 'risk_score']:.3f}")
+print(f"신용등급 ↔ 리스크점수: {correlation_matrix.loc['credit_rating', 'risk_score']:.3f}")
 
-# Create heatmap
-plt.figure(figsize=(8, 6))
-sns.heatmap(correlation_matrix, 
-           annot=True, 
-           cmap='RdYlBu_r', 
+# 히트맵 생성
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix,
+           annot=True,
+           cmap='RdYlBu_r',
            center=0,
            square=True,
-           fmt='.3f')
-plt.title('Correlation Heatmap - Financial Indicators')
+           fmt='.3f',
+           cbar_kws={"shrink": .8})
+plt.title('PI 자산 지표간 상관관계 히트맵')
 plt.tight_layout()
-plt.show()`;
+plt.show()
+
+# 리스크 임계값 초과 자산 추천
+high_risk_assets = df[df['risk_score'] > 4.0]
+print(f"\\n⚠️ 주의 필요 자산 ({len(high_risk_assets)}개):")
+for _, asset in high_risk_assets.iterrows():
+    print(f"- {asset['asset_name']}: 리스크점수 {asset['risk_score']:.1f}")`;
 
   const typeWriter = (text, callback) => {
     let i = 0;
@@ -194,7 +214,7 @@ plt.show()`;
             자연어로 질문하고 즉시 데이터 분석 결과를 확인해보세요
           </p>
           <p className="text-sm" style={{ color: colors.accent2, opacity: 0.8 }}>
-            "최근 1년 유로화, 코스피, 펀드 수익률 데이터 보여줘" 라고 입력해보세요
+            "현재 보유 PI 자산 중 최근 1개월간 신용등급이 하향된 자산 리스트 보여줘" 라고 입력해보세요
           </p>
         </div>
 
@@ -307,9 +327,9 @@ plt.show()`;
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="kospi" stroke={colors.secondary} strokeWidth={3} name="KOSPI 지수" />
-                    <Line type="monotone" dataKey="euro_rate" stroke={colors.tertiary} strokeWidth={3} name="유로화 환율" />
-                    <Line type="monotone" dataKey="fund_price" stroke={colors.accent3} strokeWidth={3} name="펀드 기준가격" />
+                    <Line type="monotone" dataKey="pi_asset_value" stroke={colors.secondary} strokeWidth={3} name="PI 자산가치 (억원)" />
+                    <Line type="monotone" dataKey="credit_score" stroke={colors.tertiary} strokeWidth={3} name="신용점수" />
+                    <Line type="monotone" dataKey="risk_level" stroke={colors.accent3} strokeWidth={3} name="리스크 수준" />
                   </LineChart>
                 </ResponsiveContainer>
               ) : showCorrelation ? (
@@ -336,7 +356,7 @@ plt.show()`;
                       ))}
                     </div>
                     <p className="text-sm mt-4" style={{ color: colors.accent3 }}>
-                      강한 양의 상관관계가 확인됩니다 (0.78 ~ 0.92)
+                      신용등급과 리스크수준 간 강한 음의 상관관계가 확인됩니다 (-0.89)
                     </p>
                   </div>
                 </div>

@@ -118,6 +118,45 @@ const WorkflowAutomation = () => {
       category: '운용',
       author: '이펀드운용',
       executions: 156
+    },
+    {
+      id: 6,
+      name: '고객 세그먼트별 카드 상품 추천',
+      description: '고객의 신용등급, 소비패턴, 연령대별 세분화를 통한 맞춤형 카드 상품 추천 및 마케팅 자동화',
+      status: 'running',
+      lastRun: '2025-08-11 16:30',
+      nextRun: '2025-08-12 09:00',
+      triggers: ['스케줄: 매일 09:00', '신규고객 가입시'],
+      actions: ['고객 데이터 조회', '세그먼트 분석 실행', '상품 매칭 알고리즘', '개인화 메시지 생성', '마케팅 채널 발송'],
+      category: '마케팅',
+      author: '박마케팅',
+      executions: 67
+    },
+    {
+      id: 7,
+      name: '보험상품 영상콘텐츠 AI 최적화',
+      description: '유튜브 연금보험 상품 가이드 영상 업로드시 자동 메타데이터 추출 및 AI 챗봇 FAQ 생성',
+      status: 'running',
+      lastRun: '2025-08-11 13:45',
+      nextRun: '영상 업로드시 자동실행',
+      triggers: ['유튜브 웹훅: 영상 업로드'],
+      actions: ['영상 스크립트 추출', 'LLM 메타데이터 생성', '구조화된 FAQ 변환', '상담시스템 DB 저장', 'AI챗봇 학습데이터 갱신'],
+      category: '마케팅',
+      author: '이상품기획',
+      executions: 23
+    },
+    {
+      id: 8,
+      name: 'PI 자산 일일 이슈 모니터링',
+      description: 'PI 포트폴리오 자산의 신용등급 하향, 부정적 뉴스 자동 감지 및 운용역 알림',
+      status: 'running',
+      lastRun: '2025-08-11 08:00',
+      nextRun: '2025-08-12 08:00',
+      triggers: ['스케줄: 매일 08:00', '신용등급 변동 감지'],
+      actions: ['PI 포트폴리오 조회', '신용평가사 등급 확인', '뉴스 데이터 분석', '리스크 점수 계산', 'UC메신저 및 이메일 알림'],
+      category: '리스크',
+      author: '김리스크총괄',
+      executions: 142
     }
   ]);
 
@@ -161,8 +200,11 @@ const WorkflowAutomation = () => {
     { id: 2, workflow: '예적금잔액 및 특수채권 상계처리', status: 'success', startTime: '2025-08-11 09:30:15', duration: '3분52초', message: 'AI 판단 완료, 상계통지서 발송' },
     { id: 3, workflow: '자금지시서 기반 펀드운용 자동화', status: 'success', startTime: '2025-08-11 14:15:22', duration: '2분1초', message: '거래서류 송부 완료' },
     { id: 4, workflow: '리스크 알림 시스템', status: 'success', startTime: '2025-08-11 15:22:15', duration: '12초', message: '알림 발송 완료' },
-    { id: 5, workflow: '유튜브 콘텐츠 AI 검색 최적화', status: 'error', startTime: '2025-08-10 14:30:22', duration: '8초', message: 'API 호출 실패' },
-    { id: 6, workflow: '일일 포트폴리오 성과 리포트', status: 'success', startTime: '2025-08-10 08:00:00', duration: '52초', message: '성공적으로 완료' }
+    { id: 5, workflow: 'PI 자산 일일 이슈 모니터링', status: 'success', startTime: '2025-08-11 08:00:30', duration: '2분15초', message: 'ABC기업 신용등급 하향 감지, 알림 발송 완료' },
+    { id: 6, workflow: '고객 세그먼트별 카드 상품 추천', status: 'success', startTime: '2025-08-11 09:00:45', duration: '1분32초', message: '20-30대 직장인 1,247명 대상 추천 완료' },
+    { id: 7, workflow: '보험상품 영상콘텐츠 AI 최적화', status: 'success', startTime: '2025-08-11 13:45:22', duration: '45초', message: '연금보험 가이드 FAQ 생성 완료' },
+    { id: 8, workflow: '유튜브 콘텐츠 AI 검색 최적화', status: 'error', startTime: '2025-08-10 14:30:22', duration: '8초', message: 'API 호출 실패' },
+    { id: 9, workflow: '일일 포트폴리오 성과 리포트', status: 'success', startTime: '2025-08-10 08:00:00', duration: '52초', message: '성공적으로 완료' }
   ];
 
   const getStatusIcon = (status) => {

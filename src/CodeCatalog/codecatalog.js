@@ -18,12 +18,12 @@ const CodeCatalog = () => {
   const [selectedCode, setSelectedCode] = useState(null);
 
   const categories = [
-    { id: 'all', name: '전체', icon: Grid, count: 24 },
+    { id: 'all', name: '전체', icon: Grid, count: 32 },
     { id: 'portfolio', name: '포트폴리오', icon: PieChart, count: 8 },
-    { id: 'risk', name: '리스크관리', icon: Shield, count: 6 },
+    { id: 'risk', name: '리스크관리', icon: Shield, count: 10 },
     { id: 'performance', name: '성과분석', icon: TrendingUp, count: 5 },
-    { id: 'market', name: '시장데이터', icon: BarChart3, count: 3 },
-    { id: 'automation', name: '자동화', icon: Zap, count: 2 }
+    { id: 'market', name: '시장데이터', icon: BarChart3, count: 5 },
+    { id: 'automation', name: '자동화', icon: Zap, count: 4 }
   ];
 
   const codeLibrary = [
@@ -122,6 +122,182 @@ const CodeCatalog = () => {
       runtime: '~8초',
       status: 'verified',
       complexity: 'advanced'
+    },
+    {
+      id: 7,
+      title: 'PI 자산 이슈 모니터링 시스템',
+      description: 'PI 포트폴리오 자산의 신용등급 변화, 부정적 뉴스 자동 감지 및 알림',
+      category: 'risk',
+      author: '김운용',
+      department: '리스크총괄부',
+      tags: ['PI자산', '이슈모니터링', '신용등급'],
+      lastUpdated: '2025-08-11',
+      usage: 156,
+      rating: 4.8,
+      language: 'Python + SQL',
+      runtime: '~15초',
+      status: 'verified',
+      complexity: 'intermediate'
+    },
+    {
+      id: 8,
+      title: '신용등급 변동 감지 알고리즘',
+      description: '다중 신용평가사 등급 변화를 실시간 감지하고 리스크 임계값 계산',
+      category: 'risk',
+      author: '이리스크',
+      department: '리스크관리팀',
+      tags: ['신용등급', '실시간감지', '임계값'],
+      lastUpdated: '2025-08-10',
+      usage: 89,
+      rating: 4.7,
+      language: 'Python',
+      runtime: '~3초',
+      status: 'verified',
+      complexity: 'advanced'
+    },
+    {
+      id: 9,
+      title: '고객 세그먼트 분석 엔진',
+      description: '고객의 신용등급, 소비패턴, 연령대별 세분화 및 상품 추천 로직',
+      category: 'market',
+      author: '박마케팅',
+      department: '상품마케팅팀',
+      tags: ['고객세분화', '상품추천', '마케팅'],
+      lastUpdated: '2025-08-09',
+      usage: 123,
+      rating: 4.6,
+      language: 'Python',
+      runtime: '~12초',
+      status: 'verified',
+      complexity: 'intermediate'
+    },
+    {
+      id: 10,
+      title: '해외결제 패턴 분석',
+      description: '카드 해외결제 데이터의 국가별, 업종별 트렌드 및 환율 민감도 분석',
+      category: 'market',
+      author: '정데이터',
+      department: '데이터팀',
+      tags: ['해외결제', '환율분석', '소비트렌드'],
+      lastUpdated: '2025-08-08',
+      usage: 67,
+      rating: 4.5,
+      language: 'Python + SQL',
+      runtime: '~8초',
+      status: 'verified',
+      complexity: 'beginner'
+    },
+    {
+      id: 11,
+      title: '포트폴리오 리스크 시나리오 분석',
+      description: '시장 급변 시 포트폴리오 듀레이션 기반 리스크 측정 및 예상 손실률 계산',
+      category: 'risk',
+      author: '최리스크',
+      department: '리스크관리팀',
+      tags: ['시나리오분석', '듀레이션', '손실률'],
+      lastUpdated: '2025-08-07',
+      usage: 45,
+      rating: 4.9,
+      language: 'Python',
+      runtime: '~5초',
+      status: 'verified',
+      complexity: 'advanced'
+    },
+    {
+      id: 12,
+      title: '보험상품 콘텐츠 자동 등록',
+      description: '유튜브 영상 메타데이터 추출 및 AI 챗봇용 FAQ 자동 생성',
+      category: 'automation',
+      author: '이콘텐츠',
+      department: '상품기획팀',
+      tags: ['콘텐츠등록', '메타데이터', 'AI챗봇'],
+      lastUpdated: '2025-08-06',
+      usage: 34,
+      rating: 4.4,
+      language: 'Python',
+      runtime: '~20초',
+      status: 'verified',
+      complexity: 'intermediate'
+    },
+    {
+      id: 13,
+      title: '뉴스 감성분석 엔진',
+      description: 'PI 자산 관련 뉴스 텍스트의 감성분석 및 리스크 점수 산출',
+      category: 'risk',
+      author: '김텍스트',
+      department: '데이터팀',
+      tags: ['감성분석', '뉴스분석', '텍스트마이닝'],
+      lastUpdated: '2025-08-05',
+      usage: 78,
+      rating: 4.6,
+      language: 'Python',
+      runtime: '~6초',
+      status: 'verified',
+      complexity: 'intermediate'
+    },
+    {
+      id: 14,
+      title: 'Teams 알림 자동발송 시스템',
+      description: '임계값 초과 시 관련 부서 Teams 채널로 자동 알림 및 담당자 배정',
+      category: 'automation',
+      author: '박알림',
+      department: 'IT팀',
+      tags: ['Teams연동', '자동알림', '업무배정'],
+      lastUpdated: '2025-08-04',
+      usage: 92,
+      rating: 4.7,
+      language: 'Python',
+      runtime: '~2초',
+      status: 'verified',
+      complexity: 'beginner'
+    },
+    {
+      id: 15,
+      title: '실시간 시장데이터 스트리밍',
+      description: '한국거래소, 블룸버그 API 연동 실시간 시장지수 및 환율 데이터 수집',
+      category: 'market',
+      author: '강시장',
+      department: '데이터팀',
+      tags: ['실시간데이터', 'API연동', '시장지수'],
+      lastUpdated: '2025-08-03',
+      usage: 156,
+      rating: 4.8,
+      language: 'Python',
+      runtime: '~1초',
+      status: 'verified',
+      complexity: 'advanced'
+    },
+    {
+      id: 16,
+      title: '재무지표 이상치 탐지',
+      description: 'PI 자산 기업의 재무비율 급변 감지 및 동종업계 벤치마킹',
+      category: 'risk',
+      author: '이재무',
+      department: '투자금융부',
+      tags: ['이상치탐지', '재무분석', '벤치마킹'],
+      lastUpdated: '2025-08-02',
+      usage: 67,
+      rating: 4.5,
+      language: 'Python + SQL',
+      runtime: '~10초',
+      status: 'verified',
+      complexity: 'intermediate'
+    },
+    {
+      id: 17,
+      title: '워크플로우 실행결과 리포팅',
+      description: '자동화 워크플로우 실행 결과를 Excel 형태로 가공 및 이메일 발송',
+      category: 'automation',
+      author: '조리포트',
+      department: 'IT팀',
+      tags: ['리포팅', 'Excel생성', '이메일발송'],
+      lastUpdated: '2025-08-01',
+      usage: 45,
+      rating: 4.3,
+      language: 'Python',
+      runtime: '~7초',
+      status: 'verified',
+      complexity: 'beginner'
     }
   ];
 
@@ -238,7 +414,7 @@ const CodeCatalog = () => {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-sm text-gray-600">총 코드</span>
-                  <span className="font-semibold">24개</span>
+                  <span className="font-semibold">32개</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-gray-600">이번 주 신규</span>
