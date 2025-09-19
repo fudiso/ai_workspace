@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Send, Play, BarChart3, TrendingUp } from 'lucide-react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, Cell } from 'recharts';
+import { Send, Play, BarChart3, TrendingUp, AlertTriangle, TrendingDown } from 'lucide-react';
 
 const AIWorkSpaceDemo = () => {
   // 컬러 팔레트 정의 (RGB to CSS)
@@ -21,21 +21,67 @@ const AIWorkSpaceDemo = () => {
   const [showCorrelation, setShowCorrelation] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
 
-  // 가상의 데이터 - PI 자산 관련
-  const chartData = [
-    { date: '2024-06', pi_asset_value: 5650, credit_score: 85, risk_level: 3.2 },
-    { date: '2024-07', pi_asset_value: 5720, credit_score: 84, risk_level: 3.4 },
-    { date: '2024-08', pi_asset_value: 5680, credit_score: 83, risk_level: 3.6 },
-    { date: '2024-09', pi_asset_value: 5750, credit_score: 82, risk_level: 3.8 },
-    { date: '2024-10', pi_asset_value: 5800, credit_score: 81, risk_level: 4.0 },
-    { date: '2024-11', pi_asset_value: 5850, credit_score: 80, risk_level: 4.2 },
-    { date: '2024-12', pi_asset_value: 5900, credit_score: 79, risk_level: 4.5 },
-    { date: '2025-01', pi_asset_value: 5920, credit_score: 78, risk_level: 4.7 },
-    { date: '2025-02', pi_asset_value: 5880, credit_score: 77, risk_level: 4.9 },
-    { date: '2025-03', pi_asset_value: 5950, credit_score: 76, risk_level: 5.1 },
-    { date: '2025-04', pi_asset_value: 6000, credit_score: 75, risk_level: 5.3 },
-    { date: '2025-05', pi_asset_value: 6050, credit_score: 74, risk_level: 5.5 }
+  // PI 자산 신용등급 하향 데이터
+  const downgradedAssets = [
+    {
+      asset_name: 'ABC기업',
+      asset_code: 'ABC001',
+      previous_rating: 'BBB+',
+      current_rating: 'BBB',
+      rating_change: -1,
+      asset_value: 850,
+      risk_score: 4.2,
+      downgrade_date: '2025-07-15'
+    },
+    {
+      asset_name: 'DEF코퍼레이션',
+      asset_code: 'DEF002',
+      previous_rating: 'A-',
+      current_rating: 'BBB+',
+      rating_change: -1,
+      asset_value: 420,
+      risk_score: 3.8,
+      downgrade_date: '2025-07-22'
+    },
+    {
+      asset_name: 'GHI홀딩스',
+      asset_code: 'GHI003',
+      previous_rating: 'BBB',
+      current_rating: 'BBB-',
+      rating_change: -1,
+      asset_value: 320,
+      risk_score: 4.5,
+      downgrade_date: '2025-08-03'
+    },
+    {
+      asset_name: 'JKL산업',
+      asset_code: 'JKL004',
+      previous_rating: 'A',
+      current_rating: 'A-',
+      rating_change: -1,
+      asset_value: 650,
+      risk_score: 3.2,
+      downgrade_date: '2025-08-08'
+    },
+    {
+      asset_name: 'MNO그룹',
+      asset_code: 'MNO005',
+      previous_rating: 'BBB-',
+      current_rating: 'BB+',
+      rating_change: -2,
+      asset_value: 180,
+      risk_score: 5.1,
+      downgrade_date: '2025-08-10'
+    }
   ];
+
+  // 위험도별 색상 매핑
+  const getRiskColor = (riskScore) => {
+    if (riskScore >= 5.0) return '#ef4444'; // 고위험 - 빨강
+    if (riskScore >= 4.0) return '#f59e0b'; // 중위험 - 주황
+    if (riskScore >= 3.0) return '#eab308'; // 경고 - 노랑
+    return '#22c55e'; // 낮음 - 초록
+  };
 
   const correlationData = [
     { name: '신용점수 vs 자산가치', correlation: -0.72 },
@@ -320,18 +366,72 @@ for _, asset in high_risk_assets.iterrows():
             </div>
             <div className="h-96">
               {showChart && !showCorrelation ? (
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={chartData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="pi_asset_value" stroke={colors.secondary} strokeWidth={3} name="PI 자산가치 (억원)" />
-                    <Line type="monotone" dataKey="credit_score" stroke={colors.tertiary} strokeWidth={3} name="신용점수" />
-                    <Line type="monotone" dataKey="risk_level" stroke={colors.accent3} strokeWidth={3} name="리스크 수준" />
-                  </LineChart>
-                </ResponsiveContainer>
+                <div className="h-full">
+                  {/* 헤더 정보 */}
+                  <div className="flex items-center justify-between mb-4 p-3 bg-red-50 rounded-lg border-l-4 border-red-400">
+                    <div className="flex items-center gap-2">
+                      <AlertTriangle className="text-red-500" size={20} />
+                      <span className="font-semibold text-red-700">신용등급 하향 자산 현황</span>
+                    </div>
+                    <div className="text-sm text-red-600">
+                      총 {downgradedAssets.length}개 자산
+                    </div>
+                  </div>
+
+                  {/* 자산 리스트 테이블 */}
+                  <div className="overflow-y-auto" style={{ height: '320px' }}>
+                    <div className="space-y-3">
+                      {downgradedAssets.map((asset, index) => (
+                        <div key={index} className="bg-white border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                          <div className="flex items-center justify-between mb-2">
+                            <div className="flex items-center gap-3">
+                              <div className="flex items-center gap-1">
+                                <TrendingDown className="text-red-500" size={16} />
+                                <span className="font-semibold text-gray-800">{asset.asset_name}</span>
+                              </div>
+                              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                                {asset.asset_code}
+                              </span>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-sm font-medium text-gray-700">
+                                {asset.asset_value}억원
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                {asset.downgrade_date}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-4">
+                              <div className="text-sm">
+                                <span className="text-gray-600">등급변화:</span>
+                                <span className="ml-1 font-medium">
+                                  <span className="text-gray-500">{asset.previous_rating}</span>
+                                  <span className="mx-1">→</span>
+                                  <span className="text-red-600">{asset.current_rating}</span>
+                                </span>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs text-gray-600">위험도:</span>
+                              <div className="flex items-center gap-1">
+                                <div
+                                  className="w-3 h-3 rounded-full"
+                                  style={{ backgroundColor: getRiskColor(asset.risk_score) }}
+                                ></div>
+                                <span className="text-sm font-medium" style={{ color: getRiskColor(asset.risk_score) }}>
+                                  {asset.risk_score}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               ) : showCorrelation ? (
                 <div className="flex items-center justify-center h-full">
                   <div className="text-center">

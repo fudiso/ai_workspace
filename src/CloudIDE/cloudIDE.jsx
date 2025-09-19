@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Play, Save, Download, Upload, FileText, Database, Bot, Terminal, Code, BarChart3, Table, Settings, Folder, Plus, X, ChevronRight, ChevronDown, Send, Copy, Maximize2, Minimize2 } from 'lucide-react';
 
 const colors = {
@@ -434,9 +435,67 @@ result_df.head()`);
               {activePanel === 'output' && (
                 <div className="space-y-4">
                   <div className="bg-gray-50 p-4 rounded">
-                    <h4 className="font-medium mb-2">차트 결과</h4>
-                    <div className="h-32 bg-white border border-gray-200 rounded flex items-center justify-center text-gray-500">
-                      [matplotlib 차트가 여기에 표시됩니다]
+                    <h4 className="font-medium mb-2">PI 자산 분석 차트 결과</h4>
+                    <div className="h-80 bg-white border border-gray-200 rounded p-4">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={[
+                          { date: '2024-06', pi_asset_value: 5650, credit_score: 85, risk_level_scaled: 32 },
+                          { date: '2024-07', pi_asset_value: 5720, credit_score: 84, risk_level_scaled: 34 },
+                          { date: '2024-08', pi_asset_value: 5680, credit_score: 83, risk_level_scaled: 36 },
+                          { date: '2024-09', pi_asset_value: 5750, credit_score: 82, risk_level_scaled: 38 },
+                          { date: '2024-10', pi_asset_value: 5800, credit_score: 81, risk_level_scaled: 40 },
+                          { date: '2024-11', pi_asset_value: 5850, credit_score: 80, risk_level_scaled: 42 },
+                          { date: '2024-12', pi_asset_value: 5900, credit_score: 79, risk_level_scaled: 45 },
+                          { date: '2025-01', pi_asset_value: 5920, credit_score: 78, risk_level_scaled: 47 },
+                          { date: '2025-02', pi_asset_value: 5880, credit_score: 77, risk_level_scaled: 49 },
+                          { date: '2025-03', pi_asset_value: 5950, credit_score: 76, risk_level_scaled: 51 },
+                          { date: '2025-04', pi_asset_value: 6000, credit_score: 75, risk_level_scaled: 53 },
+                          { date: '2025-05', pi_asset_value: 6050, credit_score: 74, risk_level_scaled: 55 }
+                        ]}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="date" />
+                          <YAxis yAxisId="left" domain={[5500, 6200]} />
+                          <YAxis yAxisId="right" orientation="right" domain={[30, 90]} />
+                          <Tooltip formatter={(value, name) => {
+                            if (name === 'PI 자산가치 (억원)') return [`${value}억원`, name];
+                            if (name === '신용점수') return [`${value}점`, name];
+                            if (name === '리스크 수준 (스케일링)') return [`${(value/10).toFixed(1)}`, '리스크 수준'];
+                            return [value, name];
+                          }} />
+                          <Legend />
+                          <Line
+                            yAxisId="left"
+                            type="monotone"
+                            dataKey="pi_asset_value"
+                            stroke={colors.secondary}
+                            strokeWidth={3}
+                            name="PI 자산가치 (억원)"
+                          />
+                          <Line
+                            yAxisId="right"
+                            type="monotone"
+                            dataKey="credit_score"
+                            stroke={colors.tertiary}
+                            strokeWidth={3}
+                            name="신용점수"
+                          />
+                          <Line
+                            yAxisId="right"
+                            type="monotone"
+                            dataKey="risk_level_scaled"
+                            stroke={colors.accent3}
+                            strokeWidth={3}
+                            name="리스크 수준 (스케일링)"
+                            dot={{ r: 4 }}
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                    <div className="mt-2 text-sm text-gray-600">
+                      <p>• <span style={{ color: colors.secondary }}>■</span> 좌축: PI 자산가치 (억원 단위)</p>
+                      <p>• <span style={{ color: colors.tertiary }}>■</span> 우축: 신용점수 (70-90점 범위)</p>
+                      <p>• <span style={{ color: colors.accent3 }}>■</span> 우축: 리스크수준 (실제값은 차트값÷10, 높을수록 위험)</p>
+                      <p className="text-red-600 font-medium mt-1">⚠️ 신용점수 하락(85→74점)과 리스크수준 증가(3.2→5.5) 추세 확인</p>
                     </div>
                   </div>
                 </div>
