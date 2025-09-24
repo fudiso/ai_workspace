@@ -14,7 +14,7 @@ const AIWorkSpaceDemo = () => {
     accent3: 'rgb(39, 58, 146)'      // Woori WON Blue (alternate)
   };
 
-  const [userInput, setUserInput] = useState('');
+  const [userInput, setUserInput] = useState('현재 보유 PI 자산 중 최근 1개월간 신용등급이 하향되거나 "영업이익 이자보상배율"이 1.0 미만인 자산 리스트 보여줘');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedCode, setGeneratedCode] = useState('');
   const [showChart, setShowChart] = useState(false);
@@ -95,54 +95,30 @@ SELECT
     p.asset_code,
     p.asset_name,
     p.current_value,
-    cr.credit_rating,
-    cr.rating_change,
-    cr.rating_date,
     n.news_sentiment,
     n.risk_score
 FROM pi_portfolio p
 LEFT JOIN credit_ratings cr ON p.asset_code = cr.asset_code
 LEFT JOIN news_analysis n ON p.asset_code = n.asset_code
-WHERE cr.rating_date >= DATEADD(month, -1, CURRENT_DATE())
-    AND (cr.rating_change < 0 OR n.risk_score > 3.0)
 ORDER BY cr.rating_date DESC, n.risk_score DESC;
 """
 
-# Connect to Snowflake and fetch data
-df = snowflake.get_data(sql_query)
-
 # 신용등급 하향 자산 필터링
 downgraded_assets = df[df['rating_change'] < 0]
-
 # 부정적 뉴스 자산 필터링
 negative_news_assets = df[df['risk_score'] > 3.0]
 
 # 시각화
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
 
 # 신용등급 변화 차트
 ax1.bar(downgraded_assets['asset_name'], downgraded_assets['rating_change'],
         color='red', alpha=0.7)
-ax1.set_title('PI 자산 신용등급 하향 현황')
-ax1.set_xlabel('자산명')
-ax1.set_ylabel('등급 변화')
-ax1.tick_params(axis='x', rotation=45)
 
 # 리스크 점수 차트
 ax2.scatter(df['current_value'], df['risk_score'],
            c=df['rating_change'], cmap='RdYlGn_r', s=100, alpha=0.7)
 ax2.set_title('자산가치 vs 리스크 점수')
-ax2.set_xlabel('현재 자산가치 (억원)')
-ax2.set_ylabel('리스크 점수')
-
-plt.tight_layout()
-plt.show()
-
-print("✅ PI 자산 이슈 모니터링 완료!")
-print(f"📊 신용등급 하향 자산: {len(downgraded_assets)}개")
 print(f"⚠️  높은 리스크 자산: {len(negative_news_assets)}개")`;
 
   const correlationCode = `# PI 자산 상관관계 분석
@@ -362,7 +338,7 @@ for _, asset in high_risk_assets.iterrows():
           <div className="bg-white rounded-xl shadow-lg p-6">
             <div className="flex items-center gap-2 mb-4">
               <BarChart3 style={{ color: colors.secondary }} size={20} />
-              <h3 className="text-xl font-semibold" style={{ color: colors.primary }}>분석 결과</h3>
+              <h3 className="text-xl font-semibold" style={{ color: colors.primary }}>실행 결과</h3>
             </div>
             <div className="h-96">
               {showChart && !showCorrelation ? (
@@ -494,7 +470,7 @@ for _, asset in high_risk_assets.iterrows():
                 }}
               >
                 <TrendingUp size={20} />
-                상관관계 분석하기
+                데이터 추가분석
               </button>
             </div>
           </div>

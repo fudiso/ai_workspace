@@ -56,15 +56,15 @@ const WorkflowAutomation = () => {
   const [workflows, setWorkflows] = useState([
     {
       id: 1,
-      name: '일일 포트폴리오 성과 리포트',
-      description: '매일 오전 8시 포트폴리오 성과를 분석하여 운용역들에게 이메일 발송',
+      name: 'PI 자산 일일 이슈 모니터링',
+      description: 'PI 포트폴리오 자산의 신용등급 하향, 부정적 뉴스 자동 감지 및 운용역 알림',
       status: 'running',
-      lastRun: '2025-06-27 08:00',
-      nextRun: '2025-06-28 08:00',
-      triggers: ['스케줄: 매일 08:00'],
-      actions: ['Snowflake 데이터 조회', 'Python 분석 실행', '이메일 발송'],
-      category: '운용',
-      author: '김운용',
+      lastRun: '2025-08-11 08:00',
+      nextRun: '2025-08-12 08:00',
+      triggers: ['스케줄: 매일 08:00', '신용등급 변동 감지'],
+      actions: ['PI 포트폴리오 조회', '신용평가사 등급 확인', '뉴스 데이터 분석', '리스크 점수 계산', 'UC메신저 및 이메일 알림'],
+      category: '리스크',
+      author: '김리스크총괄',
       executions: 142
     },
     {
@@ -147,15 +147,15 @@ const WorkflowAutomation = () => {
     },
     {
       id: 8,
-      name: 'PI 자산 일일 이슈 모니터링',
-      description: 'PI 포트폴리오 자산의 신용등급 하향, 부정적 뉴스 자동 감지 및 운용역 알림',
+      name: '일일 포트폴리오 성과 리포트',
+      description: '매일 오전 8시 포트폴리오 성과를 분석하여 운용역들에게 이메일 발송',
       status: 'running',
-      lastRun: '2025-08-11 08:00',
-      nextRun: '2025-08-12 08:00',
-      triggers: ['스케줄: 매일 08:00', '신용등급 변동 감지'],
-      actions: ['PI 포트폴리오 조회', '신용평가사 등급 확인', '뉴스 데이터 분석', '리스크 점수 계산', 'UC메신저 및 이메일 알림'],
-      category: '리스크',
-      author: '김리스크총괄',
+      lastRun: '2025-06-27 08:00',
+      nextRun: '2025-06-28 08:00',
+      triggers: ['스케줄: 매일 08:00'],
+      actions: ['Snowflake 데이터 조회', 'Python 분석 실행', '이메일 발송'],
+      category: '운용',
+      author: '김운용',
       executions: 142
     }
   ]);

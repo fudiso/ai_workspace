@@ -29,19 +29,19 @@ const CodeCatalog = () => {
   const codeLibrary = [
     {
       id: 1,
-      title: '실시간 포트폴리오 구성종목 조회',
-      description: '펀드별 실시간 보유종목 및 비중 데이터를 Snowflake에서 추출하는 표준화된 쿼리',
-      category: 'portfolio',
+      title: 'PI 자산 이슈 모니터링 시스템',
+      description: 'PI 포트폴리오 자산의 신용등급 변화, 부정적 뉴스 자동 감지 및 알림',
+      category: 'risk',
       author: '김운용',
-      department: '운용본부',
-      tags: ['실시간', '포트폴리오', 'SQL'],
-      lastUpdated: '2024-12-20',
-      usage: 142,
+      department: '리스크총괄부',
+      tags: ['PI자산', '이슈모니터링', '신용등급'],
+      lastUpdated: '2025-08-11',
+      usage: 156,
       rating: 4.8,
       language: 'Python + SQL',
-      runtime: '~2초',
+      runtime: '~15초',
       status: 'verified',
-      complexity: 'beginner'
+      complexity: 'intermediate'
     },
     {
       id: 2,
@@ -125,19 +125,19 @@ const CodeCatalog = () => {
     },
     {
       id: 7,
-      title: 'PI 자산 이슈 모니터링 시스템',
-      description: 'PI 포트폴리오 자산의 신용등급 변화, 부정적 뉴스 자동 감지 및 알림',
-      category: 'risk',
+      title: '실시간 포트폴리오 구성종목 조회',
+      description: '펀드별 실시간 보유종목 및 비중 데이터를 Snowflake에서 추출하는 표준화된 쿼리',
+      category: 'portfolio',
       author: '김운용',
-      department: '리스크총괄부',
-      tags: ['PI자산', '이슈모니터링', '신용등급'],
-      lastUpdated: '2025-08-11',
-      usage: 156,
+      department: '운용본부',
+      tags: ['실시간', '포트폴리오', 'SQL'],
+      lastUpdated: '2024-12-20',
+      usage: 142,
       rating: 4.8,
       language: 'Python + SQL',
-      runtime: '~15초',
+      runtime: '~2초',
       status: 'verified',
-      complexity: 'intermediate'
+      complexity: 'beginner'
     },
     {
       id: 8,
