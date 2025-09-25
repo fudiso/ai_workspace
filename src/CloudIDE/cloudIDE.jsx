@@ -188,7 +188,7 @@ result_df.head()`);
       >
         <div className="flex items-center space-x-4">
           <Code size={24} />
-          <h1 className="text-xl font-bold">AI WorkSpace - Cloud IDE</h1>
+          <h1 className="text-xl font-bold">클라우드 IDE (코드실행환경)</h1>
         </div>
         <div className="flex items-center space-x-2">
           <button className="p-2 hover:bg-white hover:bg-opacity-20 rounded">

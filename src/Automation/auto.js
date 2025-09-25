@@ -525,7 +525,7 @@ const WorkflowAutomation = () => {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-3">
               <Zap className="w-8 h-8" />
-              <h1 className="text-xl font-bold">AI WorkSpace - 워크플로우 자동화</h1>
+              <h1 className="text-xl font-bold">워크플로우 (자동화)</h1>
             </div>
             <div className="flex items-center space-x-3">
               <button 

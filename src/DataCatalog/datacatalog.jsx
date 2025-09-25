@@ -476,8 +476,8 @@ const DataCatalog = () => {
         style={{ backgroundColor: colors.primary }}
       >
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold mb-2">우리금융그룹 데이터 카탈로그</h1>
-          <p className="text-blue-100">은행·증권·카드·생명보험 그룹사 통합 데이터 자산을 체계적으로 활용</p>
+          <h1 className="text-3xl font-bold mb-2">데이터 카탈로그</h1>
+          <p className="text-blue-100">데이터 자산을 체계적으로 활용</p>
         </div>
       </div>
 

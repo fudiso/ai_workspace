@@ -14,7 +14,7 @@ const AIWorkSpaceDemo = () => {
     accent3: 'rgb(39, 58, 146)'      // Woori WON Blue (alternate)
   };
 
-  const [userInput, setUserInput] = useState('현재 보유 PI 자산 중 최근 1개월간 신용등급이 하향되거나 "영업이익 이자보상배율"이 1.0 미만인 자산 리스트 보여줘');
+  const [userInput, setUserInput] = useState('현재 보유 PI 자산 중 최근 1개월간 신용등급이 하향되고, "영업이익 이자보상배율"이 1.0 미만인 자산 리스트 보여줘');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedCode, setGeneratedCode] = useState('');
   const [showChart, setShowChart] = useState(false);
@@ -220,7 +220,7 @@ for _, asset in high_risk_assets.iterrows():
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <BarChart3 className="w-8 h-8" style={{ color: colors.tertiary }} />
-                <h1 className="text-2xl font-bold text-white">AI 데이터 어시스턴트</h1>
+                <h1 className="text-2xl font-bold text-white">AI 어시스턴트</h1>
               </div>
               <div className="px-3 py-1 rounded-full text-sm font-medium" style={{ backgroundColor: colors.tertiary + '20', color: colors.tertiary }}>
                 AI WorkSpace

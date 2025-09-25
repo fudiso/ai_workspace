@@ -336,7 +336,7 @@ const CodeCatalog = () => {
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <Code className="w-8 h-8" style={{ color: colors.tertiary }} />
-                <h1 className="text-2xl font-bold text-white">Code Catalog</h1>
+                <h1 className="text-2xl font-bold text-white">코드 카탈로그</h1>
               </div>
               <div className="px-3 py-1 rounded-full text-sm font-medium" style={{ backgroundColor: colors.tertiary + '20', color: colors.tertiary }}>
                 AI WorkSpace
