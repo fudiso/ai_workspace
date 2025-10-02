@@ -1055,7 +1055,7 @@ function NavigationBar() {
          <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center shadow-md">
           <User2 className="w-6 h-6 text-gray-700" />
          </div>
-         <span className="text-gray-800 font-medium">과장 김우리</span>
+         <span className="text-gray-800 font-medium">과장 최범규</span>
       </div>
     </nav>
   );
