@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Send, Play, BarChart3, Brain, Zap, GitBranch, Bot, Workflow, Cloud, Search, Users, Shield, FileText, PlayCircle, CheckCircle, ChevronDown, ChevronRight, ArrowRight, Database, Code, TrendingUp, AlertTriangle } from 'lucide-react';
+import { Send, Play, BarChart3, Brain, Zap, GitBranch, Bot, Workflow, Cloud, Search, Users, Shield, FileText, PlayCircle, CheckCircle, ChevronDown, ChevronRight, ArrowRight, Database, Code, TrendingUp, AlertTriangle, User2 } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import CodeCatalog from './CodeCatalog/codecatalog';
 import DataCatalog from './DataCatalog/datacatalog';
@@ -1030,7 +1030,13 @@ function NavigationBar() {
   return (
     <nav className="bg-white shadow-sm border-b mb-6">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-6">
-        <span className="text-xl font-bold text-blue-900 mr-8">AI WorkSpace</span>
+        <Link
+          to="/"
+          className="text-xl font-bold text-blue-900 mr-8 cursor-pointer"
+          style={{ textDecoration: 'none' }}
+        >
+          AI WorkSpace
+        </Link>
         {navItems.map((item) => (
           <Link
             key={item.to}
@@ -1045,9 +1051,17 @@ function NavigationBar() {
           </Link>
         ))}
       </div>
+      <div className="fixed top-4 right-16 flex items-center space-x-2">
+         <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center shadow-md">
+          <User2 className="w-6 h-6 text-gray-700" />
+         </div>
+         <span className="text-gray-800 font-medium">과장 김우리</span>
+      </div>
     </nav>
   );
 }
+
+
 
 function App() {
   return (
