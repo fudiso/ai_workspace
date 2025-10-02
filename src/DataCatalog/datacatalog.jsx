@@ -295,7 +295,8 @@ const DataCatalog = () => {
           <div className="flex space-x-2">
             <span 
               className="px-2 py-1 text-xs rounded-full text-white"
-              style={{ backgroundColor: colors.quaternary }}
+              style={{ backgroundColor: colors.quaternary, 
+                whiteSpace: 'nowrap'  }}
             >
               {data.updateFreq}
             </span>

@@ -228,12 +228,22 @@ const WorkflowAutomation = () => {
     const config = statusConfig[status] || { bg: 'bg-gray-100', text: 'text-gray-800', label: '알 수 없음' };
     
     return (
-      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${config.bg} ${config.text}`}>
+      <span className={`inline-flex items-center whitespace-nowrap px-2.5 py-0.5 rounded-full text-xs font-medium ${config.bg} ${config.text}`}>
         {getStatusIcon(status)}
         <span className="ml-1">{config.label}</span>
       </span>
     );
   };
+
+  return (
+    <span
+      className={`inline-flex items-center whitespace-nowrap px-2.5 py-0.5 rounded-full text-xs font-medium ${config.bg} ${config.text}`}
+    >
+      {getStatusIcon(status)}
+      <span className="ml-1">{config.label}</span>
+    </span>
+  );
+
 
   const WorkflowCard = ({ workflow }) => (
     <div 
