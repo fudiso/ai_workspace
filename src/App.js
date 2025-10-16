@@ -340,7 +340,7 @@ const AIWorkSpaceDemo = () => {
               { id: 'problems', label: '문제점 & 해결책' },
               { id: 'components', label: '구성 요소' },
               { id: 'strategy', label: '구축 전략' },
-              { id: 'scenarios', label: '사용 시나리오' }
+              { id: 'scenarios', label: '시나리오' }
             //  { id: 'timeline', label: '추진 일정' },
               // { id: 'roi', label: 'ROI & 효과' },
               // { id: 'architecture', label: '시스템 아키텍처' }
@@ -699,7 +699,7 @@ const AIWorkSpaceDemo = () => {
         {activeSection === 'scenarios' && (
           <div className="space-y-8">
             <h2 className="text-3xl font-bold text-center mb-12" style={{ color: colors.primary }}>
-              실제 사용 시나리오
+              시나리오(예시)
             </h2>
             
             <div className="grid md:grid-cols-2 gap-6">
