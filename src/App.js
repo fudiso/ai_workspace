@@ -481,70 +481,8 @@ const AIWorkSpaceDemo = () => {
               </div>
             </div>
 
-            {/* 현재 상황과 미래 도전과제 */}
+            {/* AI-Native 비전 */}
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8">
-              <h3 className="text-2xl font-bold mb-6 text-center" style={{ color: colors.primary }}>
-                왜 AI-Native 전환이 필요한가?
-              </h3>
-
-              <div className="grid md:grid-cols-2 gap-8 mb-8">
-                {/* 현재의 성공과 한계 */}
-                <div className="space-y-4">
-                  <h4 className="text-lg font-bold" style={{ color: colors.secondary }}>
-                    현재: 성공하고 있지만, 지속가능하지 않다
-                  </h4>
-                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                    <h5 className="font-semibold text-yellow-800 mb-2 flex items-center">
-                      <CheckCircle className="w-4 h-4 mr-2" />
-                      Quick-Win 전략의 성공
-                    </h5>
-                    <ul className="text-sm text-yellow-700 space-y-1">
-                      <li>• GenAI 플랫폼 도입</li>
-                      <li>• AX추진을 위한 유스케이스 선별</li>
-                      <li>• 각 자회사별 추진 계획 수립</li>
-                    </ul>
-                  </div>
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                    <h5 className="font-semibold text-red-800 mb-2 flex items-center">
-                      <AlertTriangle className="w-4 h-4 mr-2" />
-                      구조적 한계
-                    </h5>
-                    <ul className="text-sm text-red-700 space-y-1">
-                      <li>• <strong>확장성 문제:</strong> AI 전문가를 계속 늘릴 수 없음</li>
-                      <li>• <strong>업무 지연:</strong> IT 부서에 2-3개월 대기</li>
-                      <li>• <strong>노하우 분산:</strong> 개인 PC Excel 수준에 머물러</li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* 미래 도전과제 */}
-                <div className="space-y-4">
-                  <h4 className="text-lg font-bold" style={{ color: colors.tertiary }}>
-                    미래: AI 유스케이스의 폭증
-                  </h4>
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                    <div className="text-center mb-4">
-                      <div className="text-3xl font-bold" style={{ color: colors.primary }}>
-                        🚀
-                      </div>
-                      <p className="text-sm text-blue-700 font-medium">
-                        폭증하는 AI 유스케이스 수요
-                      </p>
-                    </div>
-                    <div className="text-xs text-blue-600 space-y-2">
-                      <p>현재의 전문가 중심 접근법으로는</p>
-                      <p className="font-semibold text-blue-700">이러한 수요를 충족하기 어려움</p>
-                      <div className="border-t border-blue-200 pt-2 mt-2">
-                        <p className="font-semibold text-blue-800">
-                          → 현업 구성원이 직접 AI를 활용할 수 있는 환경이 절대적으로 필요
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* AI-Native 비전 */}
               <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 border border-green-200">
                 <h4 className="text-lg font-bold mb-4 text-center" style={{ color: colors.primary }}>
                   AI-Native 비전: 모든 구성원이 AI를 도구처럼 사용하는 조직
